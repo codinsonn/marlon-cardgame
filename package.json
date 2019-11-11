@@ -1,40 +1,41 @@
 {
-  "name": "aetherspace-cms",
-  "version": "0.1.0",
-  "description": "Getting the most out of JS & React with the GREEN stack",
-  "main": "node_modules/expo/AppEntry.js",
-  "private": true,
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ThorrStevens/aetherspace-cms.git"
-  },
-  "bugs": {
-    "url": "https://github.com/ThorrStevens/aetherspace-cms/issues"
-  },
-  "homepage": "https://github.com/ThorrStevens/aetherspace-cms#readme",
-  "author": "Thorr Stevens <thor_r_stevens@hotmail.com>",
-  "license": "ISC",
-  "dependencies": {
-    "expo": "^35.0.0",
-    "react": "16.8.3",
-    "react-dom": "16.8.3",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-35.0.0.tar.gz",
-    "react-native-web": "^0.11.7",
-    "react-spring": "^8.0.27",
-    "react-with-gesture": "^4.0.8",
-    "styled-components": "^4.4.1"
-  },
-  "devDependencies": {
-    "@types/react": "^16.8.23",
-    "@types/react-native": "^0.57.65",
-    "babel-preset-expo": "^7.1.0",
-    "typescript": "^3.7.2"
-  },
-  "scripts": {
-    "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "web": "expo start --web",
-    "eject": "expo eject"
-  }
+    "name": "aetherspace-cms",
+    "version": "0.1.0",
+    "description": "Getting the most out of JS & React with the GREEN stack",
+    "main": "node_modules/expo/AppEntry.js",
+    "private": true,
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/ThorrStevens/aetherspace-cms.git"
+    },
+    "bugs": {
+        "url": "https://github.com/ThorrStevens/aetherspace-cms/issues"
+    },
+    "homepage": "http://thorrstevens.github.io/marlon-cardgame",
+    "author": "Thorr Stevens <thor_r_stevens@hotmail.com>",
+    "license": "ISC",
+    "dependencies": {
+        "expo": "^35.0.0",
+        "react": "16.8.3",
+        "react-dom": "16.8.3",
+        "react-native": "https://github.com/expo/react-native/archive/sdk-35.0.0.tar.gz",
+        "react-native-web": "^0.11.7",
+        "react-spring": "^8.0.27",
+        "react-with-gesture": "^4.0.8",
+        "styled-components": "^4.4.1"
+    },
+    "devDependencies": {
+        "@types/react": "^16.8.23",
+        "@types/react-native": "^0.57.65",
+        "babel-preset-expo": "^7.1.0",
+        "gh-pages": "^2.1.1",
+        "typescript": "^3.7.2"
+    },
+    "scripts": {
+        "start": "expo start",
+        "android": "expo start --android",
+        "ios": "expo start --ios",
+        "web": "expo start --web",
+        "eject": "expo eject"
+    }
 }

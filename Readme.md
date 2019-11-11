@@ -74,7 +74,7 @@ Next to those, all People of Marlon cards also have versions of that card with a
 -   QUICK_LEARNER: Add +1 to this card for all team members in this row.
 -   INSPIRATION_BOOST: Add +1 to this card at the end of every turn until the round is finished,
 -   PROTOTYPING: Add +1 to all JS & FE cards on your side of the field.
--   CLIENT_BRIEFING: Play card on opponents side of field, but draw 2 cards from your deck to your hand.
+-   CLIENT_BRIEFING: Draw 2 cards from your deck to your hand, but play this card on opponents side of field, adding to their total.
 -   PLANNING: Revive a player card from the "Out of Office" / graveyard stack.
 
 The final People of Marlon effect is the Platinum effect:
