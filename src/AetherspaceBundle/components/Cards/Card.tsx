@@ -2,10 +2,13 @@ import React, { useState } from 'react';
 import { View, Image, Text, TouchableOpacity, Dimensions } from 'react-native';
 import styled, { css } from 'styled-components/native';
 import { useSpring, animated } from 'react-spring/native';
+import Emoji from 'react-native-emoji';
+// Components
+import { InfoIcon } from '../../../componentRegistry';
 
 /* --- Constants ------------------------------------------------------------------------------ */
 
-const perspective = 350;
+const perspective = 1000;
 
 const { height } = Dimensions.get('window');
 const ROW_HEIGHT = height / 8;
@@ -37,6 +40,7 @@ const StyledCard = styled(TouchableOpacity)`
     width: 220px;
     height: 320px;
     ${borderRadiusCSS}
+    opacity: 1;
 `;
 
 const CardSide = styled(View)`
@@ -47,14 +51,57 @@ const CardSide = styled(View)`
     background-color: #fff;
 `;
 
+const FrontIconCSS = css`
+    position: absolute;
+    left: 10px;
+    width: 60px;
+    height: 60px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 30px;
+    border-width: 5px;
+    z-index: 100;
+`;
+
+const BaseValue = styled(View)`
+    ${FrontIconCSS}
+    top: 10px;
+    border-color: #4ca76c;
+    background-color: #3f3f46;
+`;
+
+const ValueText = styled(Text)`
+    color: #57be7b;
+    font-weight: bold;
+    font-size: 24px;
+`;
+
+const EffectIcon = styled(View)`
+    ${FrontIconCSS}
+    bottom: 10px;
+    border-color: #4ca76c;
+    background-color: #3f3f46;
+`;
+
 const StyledImage = styled(Image)`
     ${fillParentCSS}
 `;
 
-const CardInfo = styled(View)`
+const InfoToggle = styled(TouchableOpacity)`
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 100;
+`;
+
+const StyledCardInfo = styled(View)`
+    position: absolute;
+    top: 0px;
+    left: 0px;
     ${fillParentCSS}
     flex: 1;
     align-items: center;
+    background-color: #ffffff;
 `;
 
 const PersonName = styled(Text)`
@@ -99,6 +146,7 @@ const Summary = styled(Text)`
 const DraggableCard = animated(StyledCard);
 const CardFront = animated(CardSide);
 const CardBack = animated(CardSide);
+const CardInfo = animated(StyledCardInfo);
 
 /* --- <Card/> ------------------------------------------------------------------------------ */
 
@@ -106,6 +154,7 @@ const Card = props => {
     // State
     const [flipped, setFlipped] = useState(false);
     const [cardScale, setCardScale] = useState('mid');
+    const [showInfo, setShowInfo] = useState(false);
 
     // Springs
     const { scale } = useSpring({
@@ -119,14 +168,15 @@ const Card = props => {
         backRotateY: `${flipped ? 0 : -180}deg`,
         config: { mass: 5, tension: 500, friction: 80 },
     });
+    const { infoOpacity } = useSpring({ infoOpacity: showInfo ? 1 : 0 });
 
     // Render
     return (
         <DraggableCard
             style={{ transform: [{ scaleX: scale }, { scaleY: scale }] }}
-            onPress={() => {
+            onLongPress={() => {
                 setFlipped(f => !f);
-                setCardScale(flipped ? 'mid' : 'max');
+                setCardScale(flipped ? 'min' : 'max');
             }}
         >
             <CardFront
@@ -135,10 +185,41 @@ const Card = props => {
                     transform: [{ perspective }, { rotateY: frontRotateY }],
                 }}
             >
-                <StyledImage source={require('../../../../assets/Thorr.jpg')} resizeMode="cover" />
+                <BaseValue>
+                    <ValueText>10</ValueText>
+                </BaseValue>
+                <EffectIcon>
+                    <Emoji name="handshake" style={{ fontSize: 30 }} />
+                </EffectIcon>
+                <StyledImage source={require('../../../../assets/ppl/Thorr.jpg')} resizeMode="cover" />
             </CardFront>
             <CardBack style={{ opacity: backOpacity, transform: [{ perspective }, { rotateY: backRotateY }] }}>
+                <InfoToggle onPress={() => setShowInfo(!showInfo)}>
+                    <InfoIcon />
+                </InfoToggle>
                 <CardInfo>
+                    <PersonName>Thorr Stevens</PersonName>
+                    <PersonRole>JavaScript developer</PersonRole>
+                    <DividerLine />
+                    <Subtitle>
+                        <Emoji name="handshake" /> Pair Programming
+                    </Subtitle>
+                    <Summary>
+                        Double the values of all{'\n'}
+                        team members in this row{'\n'}
+                        who also have the{'\n'}
+                        "Pair Programming" effect.
+                    </Summary>
+                    <Subtitle>
+                        <Emoji name="sparkle" /> 10 current value
+                    </Subtitle>
+                    <Summary>
+                        3 base value{'\n'}
+                        +1 value boost (2x){'\n'}
+                        x2 value multiplier (1x)
+                    </Summary>
+                </CardInfo>
+                <CardInfo style={{ opacity: infoOpacity }}>
                     <PersonName>Thorr Stevens</PersonName>
                     <PersonRole>JavaScript developer</PersonRole>
                     <DividerLine />

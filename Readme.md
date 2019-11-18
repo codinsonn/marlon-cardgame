@@ -58,27 +58,28 @@ When you build your deck around a PM and a chosen project, the following additio
 
 The following effects are cards that can be played by themselves, and have no people of marlon cards attached to them:
 
--   REMOTE_WORK: Return any player card on your side of the field back to your hand.
--   RECRUITED: Remove all cards with thehighest value from both sides of the field.
--   PIZZA_TIME: Double the values of all cards on a row of choice.
--   WIFI_DOWN: Reduce the base values of all cardsin the TECHNOLOGY row to 1 on both sides of the field.
--   LICENCE_EXPIRED: Reduce the base values of allcards in the DESIGN row to 1 on both sides of the field.
--   LOW_BUDGET: Reduce the base values of allcards in the BUSINESS row to 1 on both sides ofthe field.
--   OFFICE_MANAGEMENT: Remove all WIFI_DOWN, LICENCE_EXPIRED and LOW_BUDGET effects.
+-   REMOTE_WORK 🏡Return any player card on your side of the field back to your hand.
+-   RECRUITED 👋Remove all cards with the highest value from both sides of the field.
+-   PIZZA_TIME 🍕Double the values of all cards on a row of choice.
+-   WIFI_DOWN 🙅‍♂️Reduce the base values of all cardsin the TECHNOLOGY row to 1 on both sides of the field.
+-   LICENCE_EXPIRED 🔐Reduce the base values of allcards in the DESIGN row to 1 on both sides of the field.
+-   LOW_BUDGET 📉Reduce the base values of allcards in the BUSINESS row to 1 on both sides ofthe field.
+-   OFFICE_MANAGEMENT 🛠Remove all WIFI_DOWN, LICENCE_EXPIRED and LOW_BUDGET effects.
 
 Next to those, all People of Marlon cards also have versions of that card with an effect. These effects are meant to be used in combo with others cards:
 
--   OFFICE_MANAGER: Spawn an OFFICE_MANAGEMENT row effect, clearing all WIFI_DOWN, LICENCE_EXPIRED & LOW_BUDGET effects.
--   NAME_COLLECTOR: Double the values of all cards on your side that share the same name (cumulative, incl. copies of this card).
--   TEAM_LEAD: Add +3 to all junior & +1 to all medior/senior marloni of this cards team.
--   HACKER_MAN: If opponents TECHNOLOGY row >10, crash laptop of devs in that row with highest value, removing them from the field.
--   PAIR_PROGRAMMING: Double the values of all team members in this row who also have the PAIR_PROGRAMMING effect.
--   QUICK_LEARNER: Add +1 to this card for all team members in this row.
--   INSPIRATION_BOOST: Add +1 to this card at the end of every turn until the round is finished,
--   PROTOTYPING: Add +1 to all JS & FE cards on your side of the field.
--   CLIENT_BRIEFING: Draw 2 cards from your deck to your hand, but play this card on opponents side of field, adding to their total.
--   PLANNING: Revive a player card from the "Out of Office" / graveyard stack.
+-   OFFICE_MANAGER 🛠Spawn an OFFICE_MANAGEMENT row effect, clearing all WIFI_DOWN, LICENCE_EXPIRED & LOW_BUDGET effects.
+-   NAME_COLLECTOR 👥Double the values of all cards on your side that share the same name (cumulative, incl. copies of this card).
+-   TEAM_LEAD 🧙‍♂️Add +3 to all junior & +1 to all medior/senior marloni of this cards team.
+-   TEAM_MEETING 🚀Call all other members of this team who also have the TEAM_MEETING effect from your hand or deck to this row.
+-   HACKER_MAN 🤖If opponents TECHNOLOGY row >10, crash laptop of devs in that row with highest value, removing them from the field.
+-   PAIR_PROGRAMMING 🤝Double the values of all team members in this row who also have the PAIR_PROGRAMMING effect.
+-   QUICK_LEARNER 👾Add +1 to this card for all team members in this row.
+-   INSPIRATION_BOOST 💡Add +1 to this card at the end of every turn until the round is finished,
+-   PROTOTYPING 🎛Add +1 to all JS & FE cards on your side of the field.
+-   CLIENT_BRIEFING 💁‍♂️Draw 2 cards from your deck to your hand, but play this card on opponents side of field, adding to their total.
+-   PLANNING 📅Revive a player card from the "Out of Office" / graveyard stack.
 
 The final People of Marlon effect is the Platinum effect:
 
--   PLATINUM: Locks card at double base value. Immune to all negative and positive effects. These card are rare and have a special display.
+-   PLATINUM ✨Locks card at double base value. Immune to all negative and positive effects. These card are rare and have a special display.
