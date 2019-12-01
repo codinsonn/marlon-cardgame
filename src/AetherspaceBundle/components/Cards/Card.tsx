@@ -54,11 +54,11 @@ const CardSide = styled(View)`
 const FrontIconCSS = css`
     position: absolute;
     left: 10px;
-    width: 60px;
-    height: 60px;
+    width: 70px;
+    height: 70px;
     align-items: center;
     justify-content: center;
-    border-radius: 30px;
+    border-radius: 35px;
     border-width: 5px;
     z-index: 100;
 `;
@@ -73,7 +73,7 @@ const BaseValue = styled(View)`
 const ValueText = styled(Text)`
     color: #57be7b;
     font-weight: bold;
-    font-size: 24px;
+    font-size: 28px;
 `;
 
 const EffectIcon = styled(View)`
@@ -189,7 +189,7 @@ const Card = props => {
                     <ValueText>10</ValueText>
                 </BaseValue>
                 <EffectIcon>
-                    <Emoji name="handshake" style={{ fontSize: 30 }} />
+                    <Emoji name="handshake" style={{ fontSize: 40 }} />
                 </EffectIcon>
                 <StyledImage source={require('../../../../assets/ppl/Thorr.jpg')} resizeMode="cover" />
             </CardFront>

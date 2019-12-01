@@ -40,7 +40,6 @@
         "android": "expo start --android",
         "ios": "expo start --ios",
         "web": "expo start --web",
-        "electron": "expo-electron start",
-        "eject": "expo eject"
+        "electron": "expo-electron start"
     }
 }
