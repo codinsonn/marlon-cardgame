@@ -16,13 +16,13 @@
     "license": "ISC",
     "dependencies": {
         "electron": "^6.0.12",
-        "expo": "^35.0.1",
-        "react": "^16.8.3",
-        "react-dom": "^16.8.3",
-        "react-native": "https://github.com/expo/react-native/archive/sdk-35.0.0.tar.gz",
+        "expo": "^36.0.0",
+        "react": "16.9.0",
+        "react-dom": "16.9.0",
+        "react-native": "https://github.com/expo/react-native/archive/sdk-36.0.0.tar.gz",
         "react-native-emoji": "^1.8.0",
-        "react-native-gesture-handler": "^1.3.0",
-        "react-native-svg": "^9.9.5",
+        "react-native-gesture-handler": "~1.5.0",
+        "react-native-svg": "9.13.3",
         "react-native-web": "^0.11.7",
         "react-spring": "^8.0.27",
         "styled-components": "^4.4.1"
@@ -33,7 +33,9 @@
         "@types/react": "^16.9.13",
         "@types/react-native": "^0.60.23",
         "babel-preset-expo": "^7.1.0",
-        "typescript": "^3.7.2"
+        "expo-cli": "^3.11.1",
+        "typescript": "^3.7.2",
+        "webpack-dev-server": "^3.9.0"
     },
     "scripts": {
         "start": "expo start",
