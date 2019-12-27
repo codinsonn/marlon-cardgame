@@ -47,6 +47,7 @@ const CardSide = styled(View)`
     position: absolute;
     ${fillParentCSS}
     ${borderRadiusCSS}
+    ${({ selected }) => (selected ? 'border: #715DA7 solid 6px;' : '')}
     overflow: hidden;
     background-color: #fff;
 `;
@@ -152,6 +153,7 @@ const CardInfo = animated(StyledCardInfo);
 
 const Card = props => {
     // State
+    const [selected, setSelected] = useState(false);
     const [flipped, setFlipped] = useState(false);
     const [cardScale, setCardScale] = useState('mid');
     const [showInfo, setShowInfo] = useState(false);
@@ -174,6 +176,7 @@ const Card = props => {
     return (
         <DraggableCard
             style={{ transform: [{ scaleX: scale }, { scaleY: scale }] }}
+            onPress={() => setSelected(s => !flipped && !s)}
             onLongPress={() => {
                 setFlipped(f => !f);
                 setCardScale(flipped ? 'min' : 'max');
@@ -184,6 +187,7 @@ const Card = props => {
                     opacity: frontOpacity,
                     transform: [{ perspective }, { rotateY: frontRotateY }],
                 }}
+                selected={selected}
             >
                 <BaseValue>
                     <ValueText>10</ValueText>
