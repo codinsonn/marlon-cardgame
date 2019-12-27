@@ -10,7 +10,8 @@ export { default as TechnologyIllustration } from './AetherspaceBundle/component
 
 /* --- Atoms ------------------------------------------------------------------------------ */
 
-export { default as Card } from './AetherspaceBundle/components/Cards/Card';
+export { default as PlayableCard } from './AetherspaceBundle/components/Cards/PlayableCard';
+export { default as InspectableCard } from './AetherspaceBundle/components/Cards/InspectableCard';
 
 /* --- Screens ------------------------------------------------------------------------------ */
 

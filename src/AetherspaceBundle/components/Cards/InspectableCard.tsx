@@ -150,9 +150,9 @@ const CardFront = animated(CardSide);
 const CardBack = animated(CardSide);
 const CardInfo = animated(StyledCardInfo);
 
-/* --- <Card/> ------------------------------------------------------------------------------ */
+/* --- <InspectableCard/> ------------------------------------------------------------------------------ */
 
-const Card = props => {
+const InspectableCard = props => {
     // State
     const [selected, setSelected] = useState(false);
     const [flipped, setFlipped] = useState(false);
@@ -246,4 +246,4 @@ const Card = props => {
 
 /* --- Export ------------------------------------------------------------------------------ */
 
-export default Card;
+export default InspectableCard;

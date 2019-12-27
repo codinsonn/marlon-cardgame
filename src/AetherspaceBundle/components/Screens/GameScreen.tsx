@@ -1,14 +1,20 @@
 import React from 'react';
-import { View, Image, Text, TouchableOpacity, Dimensions } from 'react-native';
-import styled, { css } from 'styled-components/native';
+import { View, Text, Dimensions } from 'react-native';
+import styled from 'styled-components/native';
 // Components
-import { Card, BusinessIllustration, DesignIllustration, TechnologyIllustration } from '../../../componentRegistry';
+import {
+    PlayableCard,
+    InspectableCard,
+    BusinessIllustration,
+    DesignIllustration,
+    TechnologyIllustration,
+} from '../../../componentRegistry';
 
 /* --- Contants ------------------------------------------------------------------------------ */
 
-const { height } = Dimensions.get('window');
+const isPhone = Dimensions.get('window').width < 850;
+
 const ILLUSTRATION_HEIGHT = Dimensions.get('window').height / 9;
-const TOTAL_SIZE = Dimensions.get('window').width > 800 ? '24px' : '16px';
 
 /* --- Styles ------------------------------------------------------------------------------ */
 
@@ -22,11 +28,23 @@ const GameContainer = styled(View)`
     justify-content: center;
 `;
 
+const InspectionContainer = styled(View)`
+    display: flex;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 200;
+`;
+
 const GameField = styled(View)`
     display: flex;
     flex-direction: column;
-    max-width: 1000px;
-    width: 90%;
+    width: 100%;
     height: 86%;
     background-color: #fff;
 `;
@@ -42,10 +60,6 @@ const GameRow = styled(View)`
         ${!isTopRow ? 'border-top-width: 2px;' : ''}
         ${!isBottomRow ? 'border-bottom-color: #FFFFFF;' : ''}
         ${!isBottomRow ? 'border-bottom-width: 2px;' : ''}
-        border-left-color: #FFFFFF;
-        border-left-width: 4px;
-        border-right-color: #FFFFFF;
-        border-right-width: 4px;
     `}
 `;
 
@@ -62,7 +76,7 @@ const RowTotal = styled(View)`
 `;
 
 RowTotal.Text = styled(Text)`
-    font-size: ${TOTAL_SIZE};
+    font-size: ${isPhone ? '15px' : '30px'};
     font-weight: bold;
     color: #ffffff;
     text-align: center;
@@ -88,13 +102,18 @@ const GameScreen = props => {
     // Render
     return (
         <GameContainer>
+            {/*/}
+            <InspectionContainer>
+                <InspectableCard />
+            </InspectionContainer>
+            {/**/}
             <GameField>
                 <GameRow bgColor="#715DA7" isTopRow>
                     <RowTotal bgColor="#635293">
                         <RowTotal.Text>110</RowTotal.Text>
                     </RowTotal>
                     <CardRow isCardContainer>
-                        <Card />
+                        <PlayableCard />
                     </CardRow>
                     <CardRow alignment="flex-start">
                         <BusinessIllustration width={ILLUSTRATION_HEIGHT} height="66%" />
@@ -105,7 +124,7 @@ const GameScreen = props => {
                         <RowTotal.Text>20</RowTotal.Text>
                     </RowTotal>
                     <CardRow isCardContainer>
-                        <Card />
+                        <PlayableCard />
                     </CardRow>
                     <CardRow alignment="flex-start">
                         <DesignIllustration width={ILLUSTRATION_HEIGHT} height="66%" />
@@ -116,11 +135,11 @@ const GameScreen = props => {
                         <RowTotal.Text>5</RowTotal.Text>
                     </RowTotal>
                     <CardRow isCardContainer>
-                        <Card />
-                        <Card />
-                        <Card />
-                        <Card />
-                        <Card />
+                        <PlayableCard />
+                        <PlayableCard />
+                        <PlayableCard />
+                        <PlayableCard />
+                        <PlayableCard />
                     </CardRow>
                     <CardRow alignment="flex-start">
                         <TechnologyIllustration width={ILLUSTRATION_HEIGHT} height="66%" />
@@ -131,7 +150,7 @@ const GameScreen = props => {
                         <RowTotal.Text>32</RowTotal.Text>
                     </RowTotal>
                     <CardRow isCardContainer>
-                        <Card />
+                        <PlayableCard />
                     </CardRow>
                     <CardRow alignment="flex-end">
                         <TechnologyIllustration width={ILLUSTRATION_HEIGHT} height="66%" />
@@ -142,7 +161,7 @@ const GameScreen = props => {
                         <RowTotal.Text>333</RowTotal.Text>
                     </RowTotal>
                     <CardRow isCardContainer>
-                        <Card />
+                        <PlayableCard />
                     </CardRow>
                     <CardRow alignment="flex-end">
                         <DesignIllustration width={ILLUSTRATION_HEIGHT} height="66%" />
@@ -153,7 +172,7 @@ const GameScreen = props => {
                         <RowTotal.Text>89</RowTotal.Text>
                     </RowTotal>
                     <CardRow isCardContainer>
-                        <Card />
+                        <PlayableCard />
                     </CardRow>
                     <CardRow alignment="flex-end">
                         <BusinessIllustration width={ILLUSTRATION_HEIGHT} height="66%" />

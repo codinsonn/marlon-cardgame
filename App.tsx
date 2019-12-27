@@ -4,7 +4,7 @@ import { AppLoading } from 'expo';
 import { Asset } from 'expo-asset';
 import styled from 'styled-components/native';
 // Components
-import { GameScreen, Card } from './src/componentRegistry';
+import { GameScreen, InspectableCard } from './src/componentRegistry';
 
 /* --- Types ------------------------------------------------------------------------------ */
 
