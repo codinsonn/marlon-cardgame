@@ -15,6 +15,7 @@
     "author": "Thorr Stevens <thor_r_stevens@hotmail.com>",
     "license": "ISC",
     "dependencies": {
+        "@react-navigation/native": "^5.0.0-alpha.21",
         "electron": "^6.0.12",
         "expo": "^36.0.0",
         "react": "16.9.0",

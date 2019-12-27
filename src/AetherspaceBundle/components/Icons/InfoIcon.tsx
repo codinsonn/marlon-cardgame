@@ -1,11 +1,8 @@
 import React from 'react';
 import Svg, { Path, Rect } from 'react-native-svg';
 
-// @ts-ignore
-// const { Path, Rect } = Svg;
-
-const InfoIcon = () => (
-    <Svg width="24" height="24">
+const InfoIcon = props => (
+    <Svg width="24" height="24" {...props}>
         <Rect width="24" height="24" fill="none" rx="0" ry="0" />
         <Path
             fillRule="evenodd"

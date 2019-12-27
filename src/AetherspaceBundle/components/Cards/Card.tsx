@@ -41,13 +41,14 @@ const StyledCard = styled(TouchableOpacity)`
     height: 320px;
     ${borderRadiusCSS}
     opacity: 1;
+    z-index: 100;
 `;
 
 const CardSide = styled(View)`
     position: absolute;
     ${fillParentCSS}
     ${borderRadiusCSS}
-    ${({ selected }) => (selected ? 'border: #715DA7 solid 6px;' : '')}
+    ${({ selected }) => (selected ? 'border: #C5C7CA solid 6px;' : '')}
     overflow: hidden;
     background-color: #fff;
 `;
@@ -155,7 +156,7 @@ const Card = props => {
     // State
     const [selected, setSelected] = useState(false);
     const [flipped, setFlipped] = useState(false);
-    const [cardScale, setCardScale] = useState('mid');
+    const [cardScale, setCardScale] = useState('min');
     const [showInfo, setShowInfo] = useState(false);
 
     // Springs

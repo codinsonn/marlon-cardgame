@@ -4,7 +4,7 @@ import { AppLoading } from 'expo';
 import { Asset } from 'expo-asset';
 import styled from 'styled-components/native';
 // Components
-import { Card } from './src/componentRegistry';
+import { GameScreen, Card } from './src/componentRegistry';
 
 /* --- Types ------------------------------------------------------------------------------ */
 
@@ -85,7 +85,10 @@ const App = () => {
 
     return isReady ? (
         <AppContainer>
+            {/*/}
             <Card />
+            {/**/}
+            <GameScreen />
         </AppContainer>
     ) : (
         <AppLoading startAsync={loadAssetsAsync} onFinish={() => setIsReady(true)} onError={console.warn} />
