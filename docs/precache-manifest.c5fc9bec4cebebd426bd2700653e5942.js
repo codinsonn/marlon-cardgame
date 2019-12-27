@@ -4,12 +4,12 @@ self.__precacheManifest = [
     "url": "/marlon-cardgame/static/media/ThomasML.7051b14f.jpg"
   },
   {
-    "revision": "ca4da454739c0a709859",
-    "url": "/marlon-cardgame/static/js/app.ddf5d153.chunk.js"
+    "revision": "0e66c996c53e8276ba2b",
+    "url": "/marlon-cardgame/static/js/app.cbf655dd.chunk.js"
   },
   {
-    "revision": "94fe4dcad87cf73c21d8298b21050d01",
-    "url": "/marlon-cardgame/static/js/app.ddf5d153.chunk.js.gz"
+    "revision": "1efc3701d82a00122101b98c65a79a77",
+    "url": "/marlon-cardgame/static/js/app.cbf655dd.chunk.js.gz"
   },
   {
     "revision": "840171d2df61e0ad0a49eb941ba981fe",
@@ -144,8 +144,8 @@ self.__precacheManifest = [
     "url": "/marlon-cardgame/apple/splash/icon_1792x828.png"
   },
   {
-    "revision": "ab7ee7a4baf832de95c3e6f324991f5c",
-    "url": "/marlon-cardgame/static/js/2.0567f47c.chunk.js.gz"
+    "revision": "604e7a0ea132594a8756593d688bf7db",
+    "url": "/marlon-cardgame/static/js/2.f70e5394.chunk.js.gz"
   },
   {
     "revision": "55144606a6b4bd3e51b61fa90d74394f",
@@ -156,8 +156,8 @@ self.__precacheManifest = [
     "url": "/marlon-cardgame/manifest.json"
   },
   {
-    "revision": "49768591dff436bda030",
-    "url": "/marlon-cardgame/static/js/2.0567f47c.chunk.js"
+    "revision": "89c5a560561eeeec55b1",
+    "url": "/marlon-cardgame/static/js/2.f70e5394.chunk.js"
   },
   {
     "revision": "d0c694b562b2208635f250762cd7fc79",
@@ -172,7 +172,7 @@ self.__precacheManifest = [
     "url": "/marlon-cardgame/favicon.ico"
   },
   {
-    "revision": "ae0ccb23e23565b745c75c9b2af1aa16",
+    "revision": "e9d219fcc5d547454e3f593303db38db",
     "url": "/marlon-cardgame/index.html"
   },
   {
@@ -184,12 +184,12 @@ self.__precacheManifest = [
     "url": "/marlon-cardgame/apple/splash/icon_1242x2688.png"
   },
   {
-    "revision": "48c7ed4e7da9792af288a60d7242d615",
-    "url": "/marlon-cardgame/expo-service-worker.js"
-  },
-  {
     "revision": "16709f23227d220b53e235a942bf292c",
     "url": "/marlon-cardgame/expo-service-worker.js.gz"
+  },
+  {
+    "revision": "48c7ed4e7da9792af288a60d7242d615",
+    "url": "/marlon-cardgame/expo-service-worker.js"
   },
   {
     "revision": "1ef05e93d98cb8bbacbb68fad46ca706",
