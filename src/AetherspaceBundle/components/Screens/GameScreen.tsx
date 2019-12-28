@@ -106,7 +106,7 @@ const GameScreen = props => {
 
     // -- Memoize Rows --
 
-    const cardOverflow = cards.length * PlayableCard.width - ROW_WIDTH;
+    const cardOverflow = cards.length * PlayableCard.width - ROW_WIDTH + cards.length * 16;
     const shouldOverflow = cardOverflow > 0;
     const overflowFactor = cardOverflow / ROW_WIDTH > 0.5 ? 0.5 : cardOverflow / ROW_WIDTH;
 

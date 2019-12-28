@@ -95,16 +95,13 @@ const PlayableCard = props => {
 
     // Springs
     const { translateX } = useSpring({
-        translateX: `${index * -CARD_WIDTH * overflowFactor + 8}px`,
+        translateX: shouldOverflow ? `${index * -CARD_WIDTH * overflowFactor + 8}px` : `${index * 8}px`,
         config: { mass: 5, tension: 500, friction: 80 },
     });
 
     // Render
     return (
-        <DraggableCard
-            style={shouldOverflow ? { transform: [{ translateX }] } : null}
-            onPress={() => setSelected(s => !s)}
-        >
+        <DraggableCard style={{ transform: [{ translateX }] }} onPress={() => setSelected(s => !s)}>
             <CardFront selected={selected}>
                 <BaseValue>
                     <ValueText>10</ValueText>
