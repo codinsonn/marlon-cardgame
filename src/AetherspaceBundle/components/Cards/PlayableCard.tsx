@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Image, Text, TouchableOpacity, Dimensions } from 'react-native';
 import styled, { css } from 'styled-components/native';
-import { animated } from 'react-spring/native';
+import { animated, useSpring } from 'react-spring/native';
 import Emoji from 'react-native-emoji';
 
 /* --- Constants ------------------------------------------------------------------------------ */
@@ -87,12 +87,24 @@ const CardFront = animated(CardSide);
 /* --- <PlayableCard/> ------------------------------------------------------------------------------ */
 
 const PlayableCard = props => {
+    // Props
+    const { index, overflowFactor, shouldOverflow } = props;
+
     // State
     const [selected, setSelected] = useState(false);
 
+    // Springs
+    const { translateX } = useSpring({
+        translateX: `${index * -CARD_WIDTH * overflowFactor + 8}px`,
+        config: { mass: 5, tension: 500, friction: 80 },
+    });
+
     // Render
     return (
-        <DraggableCard onPress={() => setSelected(s => !s)}>
+        <DraggableCard
+            style={shouldOverflow ? { transform: [{ translateX }] } : null}
+            onPress={() => setSelected(s => !s)}
+        >
             <CardFront selected={selected}>
                 <BaseValue>
                     <ValueText>10</ValueText>

@@ -16,8 +16,6 @@ const ROWS = Object.freeze({
     },
 });
 
-const { BUSINESS, DESIGN, TECHNOLOGY } = ROWS;
-
 /* --- Player Effects ------------------------------------------------------------------------------ */
 
 const EFFECTS = Object.freeze({
@@ -104,64 +102,191 @@ const EFFECTS = Object.freeze({
     },
 });
 
-const {
-    OFFICE_MANAGER,
-    NAME_COLLECTOR,
-    TEAM_LEAD,
-    HACKER_MAN,
-    PAIR_PROGRAMMING,
-    QUICK_LEARNER,
-    INSPIRATION_BOOST,
-    PROTOTYPING,
-    CLIENT_BRIEFING,
-    ONLINE_MARKETING,
-    PLANNING,
-    PLATINUM_CARD,
-} = EFFECTS;
-
 /* --- Teams & Roles ------------------------------------------------------------------------------ */
 
 const ROLES = Object.freeze({
     BACK_END: {
-        name: 'be',
+        teamID: 'be',
         title: 'PHP developer',
         allowedRows: ['technology'],
         possibleEffects: ['quick-learner', 'hacker-man', 'pair-programming'],
     },
     JAVASCRIPT: {
-        name: 'js',
+        teamID: 'js',
         title: 'Javascript developer',
         allowedRows: ['technology'],
         possibleEffects: ['quick-learner', 'hacker-man', 'pair-programming'],
     },
     FRONT_END: {
-        name: 'fe',
+        teamID: 'fe',
         title: 'Front-End developer',
         allowedRows: ['technology', 'design'],
         possibleEffects: ['quick-learner', 'prototyping', 'pair-programming'],
     },
     UX_DESIGN: {
-        name: 'ux',
+        teamID: 'ux',
         title: 'User experience designer',
         allowedRows: ['design', 'business'],
         possibleEffects: ['quick-learner', 'inspiration-boost', 'prototyping'],
     },
     MARKETING_MANAGER: {
-        name: 'mm',
+        teamID: 'mm',
         title: 'Online Marketing Manager',
         allowedRows: ['business'],
         possibleEffects: ['client-briefing', 'inspiration-boost', 'online-marketing'],
     },
     OFFICE_MANAGER: {
-        name: 'om',
+        teamID: 'om',
         title: 'Office Manager',
         allowedRows: ['business'],
         possibleEffects: ['office-manager'],
     },
     PROJECT_MANAGER: {
-        name: 'pm',
+        teamID: 'pm',
         title: 'Project Manager',
         allowedRows: ['business'],
         possibleEffects: ['planning', 'client-briefing'],
+    },
+});
+
+/* --- People of Marlon ------------------------------------------------------------------------------ */
+
+const cardsData = Object.freeze({
+    bart: {
+        ...ROLES.JAVASCRIPT,
+        fullName: 'Bart Van Canegem',
+        title: 'Javascript Teamlead',
+        possibleEffects: [...ROLES.JAVASCRIPT.possibleEffects, 'teamlead'],
+    },
+    brechtB: {
+        ...ROLES.BACK_END,
+        fullName: 'Brecht Bonte',
+    },
+    brechtDR: {
+        ...ROLES.FRONT_END,
+        fullName: 'Brecht De Ruyte',
+    },
+    brian: {
+        ...ROLES.JAVASCRIPT,
+        fullName: 'Brian Roels',
+    },
+    davy: {
+        ...ROLES.FRONT_END,
+        fullName: 'Davy ...',
+        title: 'Front-End Teamlead',
+        possibleEffects: [...ROLES.FRONT_END.possibleEffects, 'teamlead'],
+    },
+    dieter: {
+        ...ROLES.BACK_END,
+        fullName: 'Dieter Provoost',
+        title: 'PHP Teamlead',
+        possibleEffects: [...ROLES.BACK_END.possibleEffects, 'teamlead'],
+    },
+    elke: {
+        ...ROLES.PROJECT_MANAGER,
+        fullName: 'Elke ...',
+    },
+    frederikC: {
+        ...ROLES.PROJECT_MANAGER,
+        fullName: 'Frederik Claerhout',
+    },
+    frederikDP: {
+        ...ROLES.BACK_END,
+        fullName: 'Frederik De Paepe',
+    },
+    gerda: {
+        ...ROLES.PROJECT_MANAGER,
+        fullName: 'Gerda Cobbaert',
+    },
+    gert: {
+        ...ROLES.UX_DESIGN,
+        fullName: 'Gert ...',
+    },
+    jeroen: {
+        ...ROLES.BACK_END,
+        fullName: 'Jeroen Deviaene',
+    },
+    lien: {
+        ...ROLES.PROJECT_MANAGER,
+        fullName: 'Lien Vermassen',
+    },
+    lisette: {
+        ...ROLES.FRONT_END,
+        fullName: 'Lisette ...',
+    },
+    manuel: {
+        ...ROLES.BACK_END,
+        fullName: 'Manuel Heye',
+    },
+    mathieu: {
+        ...ROLES.BACK_END,
+        fullName: 'Mathieu ...',
+    },
+    nico: {
+        ...ROLES.JAVASCRIPT,
+        fullName: 'Nico Verkest',
+    },
+    niels: {
+        ...ROLES.UX_DESIGN,
+        fullName: 'Niels De Paepe',
+        allowedRows: ['design'],
+    },
+    marieke: {
+        ...ROLES.OFFICE_MANAGER,
+        fullName: 'Marieke ...',
+        isOutOfoffice: true,
+    },
+    olga: {
+        ...ROLES.UX_DESIGN,
+        fullName: 'Olga ...',
+    },
+    robin: {
+        ...ROLES.JAVASCRIPT,
+        fullName: 'Robin ...',
+    },
+    rubenC: {
+        ...ROLES.BACK_END,
+        fullName: 'Ruben Colpaert',
+    },
+    rubenH: {
+        ...ROLES.BACK_END,
+        fullName: 'Ruben Haegeman',
+    },
+    sebastian: {
+        ...ROLES.FRONT_END,
+        fullName: 'Sebastian Viaene',
+    },
+    sofie: {
+        ...ROLES.PROJECT_MANAGER,
+        fullName: 'Sofie ...',
+    },
+    thomasC: {
+        ...ROLES.PROJECT_MANAGER,
+        fullName: 'Thomas Crepain',
+    },
+    thomasML: {
+        ...ROLES.JAVASCRIPT,
+        fullName: 'Thomas MacLean',
+        isOutOfoffice: true,
+    },
+    thorr: {
+        ...ROLES.JAVASCRIPT,
+        fullName: 'Thorr Stevens',
+    },
+    tina: {
+        ...ROLES.MARKETING_MANAGER,
+        fullName: 'Tina ...',
+    },
+    tuur: {
+        ...ROLES.JAVASCRIPT,
+        fullName: 'Tuur Lievens',
+    },
+    veerle: {
+        ...ROLES.PROJECT_MANAGER,
+        fullName: 'Veerle ...',
+    },
+    vincent: {
+        ...ROLES.PROJECT_MANAGER,
+        fullName: 'Vincent Mouton',
     },
 });

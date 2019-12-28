@@ -1,5 +1,5 @@
-import React from 'react';
-import { View, Text, Dimensions } from 'react-native';
+import React, { useState, useMemo } from 'react';
+import { View, Text, TouchableOpacity, Dimensions } from 'react-native';
 import styled from 'styled-components/native';
 // Components
 import {
@@ -15,6 +15,7 @@ import {
 const isPhone = Dimensions.get('window').width < 850;
 
 const ILLUSTRATION_HEIGHT = Dimensions.get('window').height / 9;
+const ROW_WIDTH = Dimensions.get('window').width * 0.85;
 
 /* --- Styles ------------------------------------------------------------------------------ */
 
@@ -82,15 +83,16 @@ RowTotal.Text = styled(Text)`
     text-align: center;
 `;
 
-const CardRow = styled(View)`
+const CardRow = styled(TouchableOpacity)`
     position: absolute;
+    flex: 1;
     height: 100%;
     width: 85%;
     right: 0px;
     ${({ isCardContainer }) => (isCardContainer ? 'flex-direction: row;' : '')}
     z-index: ${({ isCardContainer }) => (isCardContainer ? 20 : 10)};
     align-items: ${({ alignment }) => alignment || 'center'};
-    justify-content: center;
+    justify-content: ${({ justify }) => justify || 'center'};
 `;
 
 /* --- <GameScreen/> ------------------------------------------------------------------------------ */
@@ -99,7 +101,17 @@ const GameScreen = props => {
     // Props
     const {} = props;
 
-    // Render
+    // State
+    const [cards, setCards] = useState([0]);
+
+    // -- Memoize Rows --
+
+    const cardOverflow = cards.length * PlayableCard.width - ROW_WIDTH;
+    const shouldOverflow = cardOverflow > 0;
+    const overflowFactor = cardOverflow / ROW_WIDTH > 0.5 ? 0.5 : cardOverflow / ROW_WIDTH;
+
+    // -- Render --
+
     return (
         <GameContainer>
             {/*/}
@@ -110,7 +122,7 @@ const GameScreen = props => {
             <GameField>
                 <GameRow bgColor="#715DA7" isTopRow>
                     <RowTotal bgColor="#635293">
-                        <RowTotal.Text>110</RowTotal.Text>
+                        <RowTotal.Text>10</RowTotal.Text>
                     </RowTotal>
                     <CardRow isCardContainer>
                         <PlayableCard />
@@ -121,7 +133,7 @@ const GameScreen = props => {
                 </GameRow>
                 <GameRow bgColor="#469CAC">
                     <RowTotal bgColor="#3D8997">
-                        <RowTotal.Text>20</RowTotal.Text>
+                        <RowTotal.Text>10</RowTotal.Text>
                     </RowTotal>
                     <CardRow isCardContainer>
                         <PlayableCard />
@@ -132,14 +144,21 @@ const GameScreen = props => {
                 </GameRow>
                 <GameRow bgColor="#57BE7B">
                     <RowTotal bgColor="#4CA76C">
-                        <RowTotal.Text>5</RowTotal.Text>
+                        <RowTotal.Text>110</RowTotal.Text>
                     </RowTotal>
-                    <CardRow isCardContainer>
-                        <PlayableCard />
-                        <PlayableCard />
-                        <PlayableCard />
-                        <PlayableCard />
-                        <PlayableCard />
+                    <CardRow
+                        isCardContainer
+                        justify={shouldOverflow ? 'flex-start' : 'center'}
+                        onPress={() => setCards([...cards, cards.length])}
+                    >
+                        {cards.map((c, i) => (
+                            <PlayableCard
+                                key={`${JSON.stringify(c)}-${i}`}
+                                index={i}
+                                overflowFactor={overflowFactor}
+                                shouldOverflow={shouldOverflow}
+                            />
+                        ))}
                     </CardRow>
                     <CardRow alignment="flex-start">
                         <TechnologyIllustration width={ILLUSTRATION_HEIGHT} height="66%" />
@@ -147,7 +166,7 @@ const GameScreen = props => {
                 </GameRow>
                 <GameRow bgColor="#57BE7B">
                     <RowTotal bgColor="#4CA76C">
-                        <RowTotal.Text>32</RowTotal.Text>
+                        <RowTotal.Text>10</RowTotal.Text>
                     </RowTotal>
                     <CardRow isCardContainer>
                         <PlayableCard />

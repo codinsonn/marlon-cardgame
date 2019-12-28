@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useMemo } from 'react';
 import { View, Image } from 'react-native';
 import { AppLoading } from 'expo';
 import { Asset } from 'expo-asset';
@@ -31,6 +31,7 @@ const cardImages: CardImagesType = {
     mathieu: require('./assets/ppl/Mathieu.jpg'),
     nico: require('./assets/ppl/Nico.jpg'),
     niels: require('./assets/ppl/Niels.jpg'),
+    marieke: require('./assets/ppl/Marieke.jpg'),
     olga: require('./assets/ppl/Olga.jpg'),
     robin: require('./assets/ppl/Robin.jpg'),
     rubenC: require('./assets/ppl/RubenC.jpg'),
@@ -79,15 +80,19 @@ const App = () => {
         await Promise.all([...imageAssets]);
     }, []);
 
+    // -- Build Decks --
+
+    const fullDeck = useMemo(() => {
+        // Stuff
+        return [];
+    }, [loadedCards]);
+
     // -- Render --
 
     console.log({ loadedCards });
 
     return isReady ? (
         <AppContainer>
-            {/*/}
-            <Card />
-            {/**/}
             <GameScreen />
         </AppContainer>
     ) : (
