@@ -4,12 +4,12 @@ self.__precacheManifest = [
     "url": "/marlon-cardgame/static/media/ThomasC.cf6b46c5.jpg"
   },
   {
-    "revision": "a7eac9e3d1aaeb36c52f",
-    "url": "/marlon-cardgame/static/js/app.4a7e94d1.chunk.js"
+    "revision": "b89d2f321fc540680481",
+    "url": "/marlon-cardgame/static/js/app.729cb745.chunk.js"
   },
   {
-    "revision": "d0ea541f839b856041f348f37d519543",
-    "url": "/marlon-cardgame/static/js/app.4a7e94d1.chunk.js.gz"
+    "revision": "2e3ba69a185c38900b90984866f08bb7",
+    "url": "/marlon-cardgame/static/js/app.729cb745.chunk.js.gz"
   },
   {
     "revision": "840171d2df61e0ad0a49eb941ba981fe",
@@ -148,8 +148,8 @@ self.__precacheManifest = [
     "url": "/marlon-cardgame/apple/splash/icon_1792x828.png"
   },
   {
-    "revision": "2814eb4daa3f87b7a1a6be456c46bad4",
-    "url": "/marlon-cardgame/static/js/2.b1a488eb.chunk.js.gz"
+    "revision": "ec6909d5b31ae3f6fd0c6a5be574e210",
+    "url": "/marlon-cardgame/static/js/2.a13c8dae.chunk.js.gz"
   },
   {
     "revision": "55144606a6b4bd3e51b61fa90d74394f",
@@ -160,8 +160,8 @@ self.__precacheManifest = [
     "url": "/marlon-cardgame/manifest.json"
   },
   {
-    "revision": "04c59d98f8e796e7adca",
-    "url": "/marlon-cardgame/static/js/2.b1a488eb.chunk.js"
+    "revision": "7d138c6e15debd87d1e4",
+    "url": "/marlon-cardgame/static/js/2.a13c8dae.chunk.js"
   },
   {
     "revision": "d0c694b562b2208635f250762cd7fc79",
@@ -172,6 +172,22 @@ self.__precacheManifest = [
     "url": "/marlon-cardgame/apple/splash/icon_2688x1242.png"
   },
   {
+    "revision": "7a7bc7ead25db795e58b336f04d2624c",
+    "url": "/marlon-cardgame/favicon.ico"
+  },
+  {
+    "revision": "52e0a18c7a339578f2774228cf22694d",
+    "url": "/marlon-cardgame/index.html"
+  },
+  {
+    "revision": "641afc06fa8aa7620d14945ccfde6b1f",
+    "url": "/marlon-cardgame/apple/splash/icon_750x1334.png"
+  },
+  {
+    "revision": "1daa208c0af884938508a6515bf66311",
+    "url": "/marlon-cardgame/apple/splash/icon_1242x2688.png"
+  },
+  {
     "revision": "48c7ed4e7da9792af288a60d7242d615",
     "url": "/marlon-cardgame/expo-service-worker.js"
   },
@@ -180,48 +196,32 @@ self.__precacheManifest = [
     "url": "/marlon-cardgame/expo-service-worker.js.gz"
   },
   {
-    "revision": "7a7bc7ead25db795e58b336f04d2624c",
-    "url": "/marlon-cardgame/favicon.ico"
-  },
-  {
-    "revision": "ac1446231d6698c787286284cf25cb32",
-    "url": "/marlon-cardgame/index.html"
+    "revision": "1ef05e93d98cb8bbacbb68fad46ca706",
+    "url": "/marlon-cardgame/apple/splash/icon_2436x1125.png"
   },
   {
     "revision": "ba07666ef195efbe64003e00035008b2",
     "url": "/marlon-cardgame/apple/splash/icon_828x1792.png"
   },
   {
-    "revision": "06c55e1a313994117d2cba90ada18f93",
-    "url": "/marlon-cardgame/apple/splash/icon_1125x2436.png"
-  },
-  {
-    "revision": "1ef05e93d98cb8bbacbb68fad46ca706",
-    "url": "/marlon-cardgame/apple/splash/icon_2436x1125.png"
-  },
-  {
-    "revision": "af0801f70e0d3be43842630bd67ab469",
-    "url": "/marlon-cardgame/apple/splash/icon_1136x640.png"
-  },
-  {
     "revision": "7e3a51ecf5fbd46f3049423258216634",
     "url": "/marlon-cardgame/apple/splash/icon_640x1136.png"
-  },
-  {
-    "revision": "641afc06fa8aa7620d14945ccfde6b1f",
-    "url": "/marlon-cardgame/apple/splash/icon_750x1334.png"
-  },
-  {
-    "revision": "ac026fc04b656d0f6152a9e6cdd29a83",
-    "url": "/marlon-cardgame/apple/splash/icon_1242x2208.png"
   },
   {
     "revision": "95134c8d88093ed687dbd90654d7b3f8",
     "url": "/marlon-cardgame/apple/splash/icon_1334x750.png"
   },
   {
-    "revision": "1daa208c0af884938508a6515bf66311",
-    "url": "/marlon-cardgame/apple/splash/icon_1242x2688.png"
+    "revision": "ac026fc04b656d0f6152a9e6cdd29a83",
+    "url": "/marlon-cardgame/apple/splash/icon_1242x2208.png"
+  },
+  {
+    "revision": "af0801f70e0d3be43842630bd67ab469",
+    "url": "/marlon-cardgame/apple/splash/icon_1136x640.png"
+  },
+  {
+    "revision": "06c55e1a313994117d2cba90ada18f93",
+    "url": "/marlon-cardgame/apple/splash/icon_1125x2436.png"
   },
   {
     "revision": "cd405482fed247b410cad607ba14b282",

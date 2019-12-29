@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/marlon-cardgame/precache-manifest.0f053a97ef68fd757c3e6d5902e9d568.js"
+  "/marlon-cardgame/precache-manifest.f06bdc510353bf2109c3c0e7a5d0f31c.js"
 );
 
 workbox.skipWaiting();
