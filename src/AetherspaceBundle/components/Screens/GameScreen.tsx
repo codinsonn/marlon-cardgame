@@ -111,6 +111,20 @@ const GameScreen = props => {
         business: [0],
     });
 
+    // -- Sort Rows --
+
+    const sortedRows = useMemo(() => {
+        const order = [
+            'opponent-business',
+            'opponent-design',
+            'opponent-technology',
+            'technology',
+            'design',
+            'business',
+        ];
+        return order.reduce((acc, rowKey) => ({ ...acc, [rowKey]: cards[rowKey] }), {});
+    }, [cards]);
+
     // -- Render --
 
     return (
@@ -121,7 +135,7 @@ const GameScreen = props => {
             </InspectionContainer>
             {/**/}
             <GameField>
-                {Object.entries(cards).map(([rowKey, rowCards], rowIndex) => {
+                {Object.entries(sortedRows).map(([rowKey, rowCards], rowIndex) => {
                     const arrIndex = rowIndex < 3 ? rowIndex : 5 - rowIndex;
                     const bgColor = ['#715DA7', '#469CAC', '#57BE7B'][arrIndex];
                     const totalBgColor = ['#635293', '#3D8997', '#4CA76C'][arrIndex];
