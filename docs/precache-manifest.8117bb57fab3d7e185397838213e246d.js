@@ -4,12 +4,12 @@ self.__precacheManifest = [
     "url": "/marlon-cardgame/static/media/ThomasC.cf6b46c5.jpg"
   },
   {
-    "revision": "24ec84c03474161d7a28",
-    "url": "/marlon-cardgame/static/js/app.90f9d1ab.chunk.js"
+    "revision": "f4c51d28a2f0e96c0969",
+    "url": "/marlon-cardgame/static/js/app.1ec379a5.chunk.js"
   },
   {
-    "revision": "891808d4ab0875bd27d134c3934752c1",
-    "url": "/marlon-cardgame/static/js/app.90f9d1ab.chunk.js.gz"
+    "revision": "2e63200d7596bf15a0a18281f7f2b455",
+    "url": "/marlon-cardgame/static/js/app.1ec379a5.chunk.js.gz"
   },
   {
     "revision": "840171d2df61e0ad0a49eb941ba981fe",
@@ -148,8 +148,8 @@ self.__precacheManifest = [
     "url": "/marlon-cardgame/apple/splash/icon_1792x828.png"
   },
   {
-    "revision": "918daac7adb482e27bd905e9911a4d6e",
-    "url": "/marlon-cardgame/static/js/2.a0f8b434.chunk.js.gz"
+    "revision": "baae7cabeb4045ecd900d9a9e47a9ad3",
+    "url": "/marlon-cardgame/static/js/2.b2833891.chunk.js.gz"
   },
   {
     "revision": "55144606a6b4bd3e51b61fa90d74394f",
@@ -160,8 +160,8 @@ self.__precacheManifest = [
     "url": "/marlon-cardgame/manifest.json"
   },
   {
-    "revision": "dd28a89334ecfe18dcb3",
-    "url": "/marlon-cardgame/static/js/2.a0f8b434.chunk.js"
+    "revision": "dd54ea1397ed2342777b",
+    "url": "/marlon-cardgame/static/js/2.b2833891.chunk.js"
   },
   {
     "revision": "d0c694b562b2208635f250762cd7fc79",
@@ -172,22 +172,6 @@ self.__precacheManifest = [
     "url": "/marlon-cardgame/apple/splash/icon_2688x1242.png"
   },
   {
-    "revision": "7a7bc7ead25db795e58b336f04d2624c",
-    "url": "/marlon-cardgame/favicon.ico"
-  },
-  {
-    "revision": "ad8d1303e9d9d2c47f06ef97da027139",
-    "url": "/marlon-cardgame/index.html"
-  },
-  {
-    "revision": "641afc06fa8aa7620d14945ccfde6b1f",
-    "url": "/marlon-cardgame/apple/splash/icon_750x1334.png"
-  },
-  {
-    "revision": "1daa208c0af884938508a6515bf66311",
-    "url": "/marlon-cardgame/apple/splash/icon_1242x2688.png"
-  },
-  {
     "revision": "48c7ed4e7da9792af288a60d7242d615",
     "url": "/marlon-cardgame/expo-service-worker.js"
   },
@@ -196,20 +180,36 @@ self.__precacheManifest = [
     "url": "/marlon-cardgame/expo-service-worker.js.gz"
   },
   {
-    "revision": "1ef05e93d98cb8bbacbb68fad46ca706",
-    "url": "/marlon-cardgame/apple/splash/icon_2436x1125.png"
+    "revision": "5ff695bc2c614b4d47d7a9a130dba47b",
+    "url": "/marlon-cardgame/index.html"
+  },
+  {
+    "revision": "7a7bc7ead25db795e58b336f04d2624c",
+    "url": "/marlon-cardgame/favicon.ico"
   },
   {
     "revision": "ba07666ef195efbe64003e00035008b2",
     "url": "/marlon-cardgame/apple/splash/icon_828x1792.png"
   },
   {
+    "revision": "95134c8d88093ed687dbd90654d7b3f8",
+    "url": "/marlon-cardgame/apple/splash/icon_1334x750.png"
+  },
+  {
+    "revision": "1ef05e93d98cb8bbacbb68fad46ca706",
+    "url": "/marlon-cardgame/apple/splash/icon_2436x1125.png"
+  },
+  {
+    "revision": "641afc06fa8aa7620d14945ccfde6b1f",
+    "url": "/marlon-cardgame/apple/splash/icon_750x1334.png"
+  },
+  {
     "revision": "7e3a51ecf5fbd46f3049423258216634",
     "url": "/marlon-cardgame/apple/splash/icon_640x1136.png"
   },
   {
-    "revision": "95134c8d88093ed687dbd90654d7b3f8",
-    "url": "/marlon-cardgame/apple/splash/icon_1334x750.png"
+    "revision": "1daa208c0af884938508a6515bf66311",
+    "url": "/marlon-cardgame/apple/splash/icon_1242x2688.png"
   },
   {
     "revision": "ac026fc04b656d0f6152a9e6cdd29a83",
