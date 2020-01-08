@@ -2,13 +2,7 @@ import React, { useState, useMemo } from 'react';
 import { View, Text, TouchableOpacity, Dimensions } from 'react-native';
 import styled from 'styled-components/native';
 // Components
-import {
-    PlayableCard,
-    InspectableCard,
-    BusinessIllustration,
-    DesignIllustration,
-    TechnologyIllustration,
-} from '../../../componentRegistry';
+import { BusinessIllustration, DesignIllustration, TechnologyIllustration } from '../../leagueRegistry';
 
 /* --- Contants ------------------------------------------------------------------------------ */
 
@@ -99,16 +93,16 @@ const CardRow = styled(TouchableOpacity)`
 
 const GameScreen = props => {
     // Props
-    const {} = props;
+    const { collectableCards, PlayableCard, InspectableCard } = props;
 
     // State
     const [cards, setCards] = useState({
-        'opponent-business': [0],
-        'opponent-design': [0],
-        'opponent-technology': [0],
-        technology: [0],
-        design: [0],
-        business: [0],
+        'opponent-business': [],
+        'opponent-design': [],
+        'opponent-technology': [],
+        technology: [],
+        design: [],
+        business: [],
     });
 
     // -- Sort Rows --
@@ -124,6 +118,8 @@ const GameScreen = props => {
         ];
         return order.reduce((acc, rowKey) => ({ ...acc, [rowKey]: cards[rowKey] }), {});
     }, [cards]);
+
+    console.log({ cards, collectableCards });
 
     // -- Render --
 
@@ -142,7 +138,19 @@ const GameScreen = props => {
                     const cardOverflow = rowCards.length * PlayableCard.width - ROW_WIDTH + rowCards.length * 12;
                     const shouldOverflow = cardOverflow > 0;
                     const overflowFactor = cardOverflow / ROW_WIDTH > 0.5 ? 0.5 : cardOverflow / ROW_WIDTH;
-                    const onPress = () => setCards({ ...cards, [rowKey]: [...rowCards, rowCards.length] });
+                    const onPress = () => {
+                        const cardsInRow = cards[rowKey].map(({ cardID }) => cardID);
+                        const allowedCards = Object.values(collectableCards).filter(({ cardID, allowedRows }) => {
+                            const alreadyPlayed = cardsInRow.includes(cardID);
+                            const allowedInRow = allowedRows.includes(rowKey);
+                            console.log({ alreadyPlayed, allowedInRow });
+                            return !alreadyPlayed && allowedInRow;
+                        });
+                        const newCardIndex = Math.round(Math.random() * allowedCards.length);
+                        const newCard = allowedCards[newCardIndex];
+                        console.log({ newCardIndex, newCard, allowedCards });
+                        if (newCard) setCards({ ...cards, [rowKey]: [...rowCards, newCard] });
+                    };
                     return (
                         <GameRow bgColor={bgColor} isTopRow={rowIndex === 0} isBottomRow={rowIndex === 5}>
                             <RowTotal bgColor={totalBgColor}>
@@ -153,10 +161,11 @@ const GameScreen = props => {
                                 onPress={onPress}
                                 isCardContainer
                             >
-                                {rowCards.map((c, n) => (
+                                {rowCards.map((card, i) => (
                                     <PlayableCard
-                                        key={`${rowKey}-${JSON.stringify(c)}-${n}`}
-                                        index={n}
+                                        key={`${rowKey}-${JSON.stringify(card.cardID)}-${i}`}
+                                        index={i}
+                                        card={card}
                                         overflowFactor={overflowFactor}
                                         shouldOverflow={shouldOverflow}
                                     />

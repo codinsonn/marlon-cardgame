@@ -4,7 +4,7 @@ import styled, { css } from 'styled-components/native';
 import { useSpring, animated } from 'react-spring/native';
 import Emoji from 'react-native-emoji';
 // Components
-import { InfoIcon } from '../../../componentRegistry';
+import { InfoIcon } from '../../leagueRegistry';
 
 /* --- Constants ------------------------------------------------------------------------------ */
 
@@ -196,7 +196,7 @@ const InspectableCard = props => {
                 <EffectIcon>
                     <Emoji name="handshake" style={{ fontSize: 40 }} />
                 </EffectIcon>
-                <StyledImage source={require('../../../../assets/ppl/Thorr.jpg')} resizeMode="cover" />
+                <StyledImage source={require('../../../assets/ppl/Thorr.jpg')} resizeMode="cover" />
             </CardFront>
             <CardBack style={{ opacity: backOpacity, transform: [{ perspective }, { rotateY: backRotateY }] }}>
                 <InfoToggle onPress={() => setShowInfo(!showInfo)}>

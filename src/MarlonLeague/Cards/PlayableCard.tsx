@@ -88,7 +88,9 @@ const CardFront = animated(CardSide);
 
 const PlayableCard = props => {
     // Props
-    const { index, overflowFactor, shouldOverflow } = props;
+    const { card, index, overflowFactor, shouldOverflow } = props;
+    //const {  } = card;
+    console.log({ card });
 
     // State
     const [selected, setSelected] = useState(false);
@@ -106,10 +108,12 @@ const PlayableCard = props => {
                 <BaseValue>
                     <ValueText>10</ValueText>
                 </BaseValue>
-                <EffectIcon>
-                    <Emoji name="handshake" style={{ fontSize: isPhone ? 12 : 18 }} />
-                </EffectIcon>
-                <StyledImage source={require('../../../../assets/ppl/Thorr.jpg')} resizeMode="cover" />
+                {card?.effect?.emojiKey && (
+                    <EffectIcon>
+                        <Emoji name={card?.effect?.emojiKey} style={{ fontSize: isPhone ? 12 : 18 }} />
+                    </EffectIcon>
+                )}
+                <StyledImage source={card?.image} resizeMode="cover" />
             </CardFront>
         </DraggableCard>
     );
