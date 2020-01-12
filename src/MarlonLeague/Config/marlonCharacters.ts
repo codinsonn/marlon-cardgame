@@ -11,6 +11,7 @@ export type MarlonRolesType = { [key: string]: MarlonRoleType };
 
 export type MarlonCharacterType = MarlonRoleType & {
     fullName: string;
+    startDate: string;
     companyRole: string;
     summary: string;
     isOutOfOffice?: boolean;
@@ -25,43 +26,43 @@ const ROLES: MarlonRolesType = Object.freeze({
         teamID: 'be',
         title: 'PHP developer',
         allowedRows: ['technology'],
-        possibleEffects: ['quick-learner', 'hacker-man', 'pair-programming'],
+        possibleEffects: ['platinum-card', 'quick-learner', 'hacker-man', 'pair-programming'],
     },
     JAVASCRIPT: {
         teamID: 'js',
         title: 'Javascript developer',
         allowedRows: ['technology'],
-        possibleEffects: ['quick-learner', 'hacker-man', 'pair-programming'],
+        possibleEffects: ['platinum-card', 'quick-learner', 'hacker-man', 'pair-programming'],
     },
     FRONT_END: {
         teamID: 'fe',
         title: 'Front-End developer',
         allowedRows: ['technology', 'design'],
-        possibleEffects: ['quick-learner', 'prototyping', 'pair-programming'],
+        possibleEffects: ['platinum-card', 'quick-learner', 'prototyping', 'pair-programming'],
     },
     UX_DESIGN: {
         teamID: 'ux',
         title: 'User experience designer',
         allowedRows: ['design', 'business'],
-        possibleEffects: ['quick-learner', 'inspiration-boost', 'prototyping'],
+        possibleEffects: ['platinum-card', 'quick-learner', 'inspiration-boost', 'prototyping', 'consultancy'],
     },
     MARKETING_MANAGER: {
         teamID: 'mm',
         title: 'Online Marketing Manager',
         allowedRows: ['business'],
-        possibleEffects: ['client-briefing', 'inspiration-boost', 'online-marketing'],
+        possibleEffects: ['platinum-card', 'consultancy', 'inspiration-boost', 'online-marketing'],
     },
     OFFICE_MANAGER: {
         teamID: 'om',
         title: 'Office Manager',
         allowedRows: ['business'],
-        possibleEffects: ['office-manager'],
+        possibleEffects: ['platinum-card', 'office-manager'],
     },
     PROJECT_MANAGER: {
         teamID: 'pm',
         title: 'Project Manager',
         allowedRows: ['business'],
-        possibleEffects: ['planning', 'client-briefing'],
+        possibleEffects: ['platinum-card', 'planning', 'consultancy'],
     },
 });
 
@@ -85,6 +86,7 @@ const marlonCharacters: MarlonCharactersType = Object.freeze({
         fullName: 'Bart Van Canegem',
         title: 'Team Lead JavaScript',
         possibleEffects: [...ROLES.JAVASCRIPT.possibleEffects, 'team-lead'],
+        startDate: '01/01/2009',
         companyRole: `
             vragen rond het\n
             JavaScript eco systeem
@@ -101,6 +103,7 @@ const marlonCharacters: MarlonCharactersType = Object.freeze({
     nico: {
         ...ROLES.JAVASCRIPT,
         fullName: 'Nico Verkest',
+        startDate: '01/01/2015',
         companyRole: 'JavaScript',
         summary: `
             React & React-Native\n
@@ -112,6 +115,7 @@ const marlonCharacters: MarlonCharactersType = Object.freeze({
     brian: {
         ...ROLES.JAVASCRIPT,
         fullName: 'Brian Roels',
+        startDate: '01/01/2019',
         companyRole: 'React, UI-implementatie',
         summary: `
             classificatie, objectdetectie\n
@@ -126,6 +130,7 @@ const marlonCharacters: MarlonCharactersType = Object.freeze({
     robin: {
         ...ROLES.JAVASCRIPT,
         fullName: 'Robin Kossi',
+        startDate: '01/01/2017',
         companyRole: `
             JavaScript development\n
             (React, Node.JS, CI integratie, ...)
@@ -140,6 +145,7 @@ const marlonCharacters: MarlonCharactersType = Object.freeze({
     thorr: {
         ...ROLES.JAVASCRIPT,
         fullName: 'Thorr Stevens',
+        startDate: '01/01/2018',
         companyRole: 'Fratello serverside rendering',
         summary: `
             React hooks of componenten\n
@@ -152,6 +158,7 @@ const marlonCharacters: MarlonCharactersType = Object.freeze({
     tuur: {
         ...ROLES.JAVASCRIPT,
         fullName: 'Tuur Lievens',
+        startDate: '01/01/2019',
         companyRole: `
             Toyota retailer &\n
             car on display app
@@ -167,7 +174,9 @@ const marlonCharacters: MarlonCharactersType = Object.freeze({
     thomasML: {
         ...ROLES.JAVASCRIPT,
         fullName: 'Thomas MacLean',
+        startDate: '01/01/2018',
         isOutOfoffice: true,
+        possibleEffects: [...ROLES.JAVASCRIPT.possibleEffects, 'name-collector'],
         companyRole: 'JavaScript/Node',
         summary: `
             Vue\n
@@ -180,6 +189,7 @@ const marlonCharacters: MarlonCharactersType = Object.freeze({
         ...ROLES.BACK_END,
         fullName: 'Dieter Provoost',
         title: 'Team Lead PHP',
+        startDate: '01/01/2012',
         possibleEffects: [...ROLES.BACK_END.possibleEffects, 'team-lead'],
         companyRole: 'PHP, serverconfiguratie en webshops',
         summary: `
@@ -194,6 +204,7 @@ const marlonCharacters: MarlonCharactersType = Object.freeze({
     brechtB: {
         ...ROLES.BACK_END,
         fullName: 'Brecht Bonte',
+        startDate: '01/01/2011',
         companyRole: 'Fratello gerelateerde backend zaken',
         summary: `
             PHPtorm pro-tips™️\n
@@ -206,6 +217,7 @@ const marlonCharacters: MarlonCharactersType = Object.freeze({
     frederikDP: {
         ...ROLES.BACK_END,
         fullName: 'Frederik De Paepe',
+        startDate: '01/01/2010',
         companyRole: 'ontwikkeling in PHP',
         summary: `
             Fratello CMS\n
@@ -217,6 +229,7 @@ const marlonCharacters: MarlonCharactersType = Object.freeze({
     manuel: {
         ...ROLES.BACK_END,
         fullName: 'Manuel Heye',
+        startDate: '01/01/2016',
         companyRole: 'PHP, Fratello, SMS-parkeren',
         summary: `
             cafés in Gent\n
@@ -227,6 +240,7 @@ const marlonCharacters: MarlonCharactersType = Object.freeze({
     mathieu: {
         ...ROLES.BACK_END,
         fullName: 'Mathieu Duffeler',
+        startDate: '01/01/2012',
         companyRole: 'Daikin, VDAB, PHP',
         summary: `
             security\n
@@ -238,6 +252,8 @@ const marlonCharacters: MarlonCharactersType = Object.freeze({
     rubenC: {
         ...ROLES.BACK_END,
         fullName: 'Ruben Colpaert',
+        startDate: '01/01/2019',
+        possibleEffects: [...ROLES.BACK_END.possibleEffects, 'name-collector'],
         companyRole: 'PHP-ontwikkeling',
         summary: `
             how to be a nood at the company\n
@@ -249,6 +265,8 @@ const marlonCharacters: MarlonCharactersType = Object.freeze({
     rubenH: {
         ...ROLES.BACK_END,
         fullName: 'Ruben Haegeman',
+        startDate: '01/01/2016',
+        possibleEffects: [...ROLES.BACK_END.possibleEffects, 'name-collector'],
         companyRole: 'vragen over PHP',
         summary: `
             MySql\n
@@ -261,7 +279,8 @@ const marlonCharacters: MarlonCharactersType = Object.freeze({
         ...ROLES.FRONT_END,
         fullName: 'Davy ...',
         title: 'Team Lead Front-End',
-        possibleEffects: [...ROLES.FRONT_END.possibleEffects, 'team-lead'],
+        startDate: '01/01/2008',
+        possibleEffects: [...ROLES.FRONT_END.possibleEffects, 'consultancy', 'team-lead'],
         companyRole: `
             snelle toegankelijke en kick-ass\n
             Front-Ends voor je website of app
@@ -278,6 +297,7 @@ const marlonCharacters: MarlonCharactersType = Object.freeze({
     brechtDR: {
         ...ROLES.FRONT_END,
         fullName: 'Brecht De Ruyte',
+        startDate: '01/01/2016',
         companyRole: `
             vragen in verband met lay-out,\n
             animaties, performance,\n
@@ -294,6 +314,7 @@ const marlonCharacters: MarlonCharactersType = Object.freeze({
     lisette: {
         ...ROLES.FRONT_END,
         fullName: 'Lisette Mazure',
+        startDate: '01/01/2019',
         companyRole: `
             the exciting side\n
             of Front-end
@@ -309,6 +330,7 @@ const marlonCharacters: MarlonCharactersType = Object.freeze({
     sebastian: {
         ...ROLES.FRONT_END,
         fullName: 'Sebastian Viaene',
+        startDate: '01/01/2014',
         companyRole: `
             Front-End gerelateerde zaken\n
             zoals HTML, CSS, DOM, ...
@@ -327,6 +349,7 @@ const marlonCharacters: MarlonCharactersType = Object.freeze({
         ...ROLES.UX_DESIGN,
         fullName: 'Gert Dedeyne',
         title: 'Team Lead Design',
+        startDate: '01/01/2011',
         possibleEffects: [...ROLES.UX_DESIGN.possibleEffects, 'team-lead'],
         companyRole: `
             webdesign, prototypes\n
@@ -344,6 +367,7 @@ const marlonCharacters: MarlonCharactersType = Object.freeze({
         fullName: 'Niels De Paepe',
         allowedRows: ['design'],
         title: 'Designer',
+        startDate: '01/01/2015',
         companyRole: 'de facade van een website',
         summary: `
             webdesign\n
@@ -358,6 +382,7 @@ const marlonCharacters: MarlonCharactersType = Object.freeze({
         ...ROLES.UX_DESIGN,
         fullName: 'Olga Maertens',
         title: 'Analyst',
+        startDate: '01/01/2019',
         companyRole: `
             alles over analyse\n
             en prototypes
@@ -373,6 +398,7 @@ const marlonCharacters: MarlonCharactersType = Object.freeze({
     frederikC: {
         ...ROLES.PROJECT_MANAGER,
         fullName: 'Frederik Claerhout',
+        startDate: '01/01/2008',
         title: 'CEO',
         companyRole: `
             een doordachte aanpak\n
@@ -391,6 +417,7 @@ const marlonCharacters: MarlonCharactersType = Object.freeze({
     elke: {
         ...ROLES.PROJECT_MANAGER,
         fullName: 'Elke De Vleeschouwer',
+        startDate: '01/01/2012',
         companyRole: 'Toyota gerelateerde vragen',
         summary: `
             planning\n
@@ -404,6 +431,7 @@ const marlonCharacters: MarlonCharactersType = Object.freeze({
     gerda: {
         ...ROLES.PROJECT_MANAGER,
         fullName: 'Gerda Cobbaert',
+        startDate: '01/01/2018',
         companyRole: 'Daikin & Dockx Rental',
         summary: `
             great coffee\n
@@ -415,6 +443,7 @@ const marlonCharacters: MarlonCharactersType = Object.freeze({
     lien: {
         ...ROLES.PROJECT_MANAGER,
         fullName: 'Lien Vermassen',
+        startDate: '01/01/2015',
         companyRole: `
             de ins en outs van\n
             het Fratello framework
@@ -429,6 +458,7 @@ const marlonCharacters: MarlonCharactersType = Object.freeze({
     sofie: {
         ...ROLES.PROJECT_MANAGER,
         fullName: 'Sofie Verschraegen',
+        startDate: '01/01/2019',
         companyRole: `
             het in goede banen\n
             leiden van projecten
@@ -444,6 +474,8 @@ const marlonCharacters: MarlonCharactersType = Object.freeze({
     thomasC: {
         ...ROLES.PROJECT_MANAGER,
         fullName: 'Thomas Crepain',
+        startDate: '01/01/2015',
+        possibleEffects: [...ROLES.PROJECT_MANAGER.possibleEffects, 'name-collector'],
         companyRole: `
             de projecten die over parkeren\n
             of elektriciteit gaan
@@ -459,6 +491,7 @@ const marlonCharacters: MarlonCharactersType = Object.freeze({
     veerle: {
         ...ROLES.PROJECT_MANAGER,
         fullName: 'Veerle Van den Bulcke',
+        startDate: '01/01/2018',
         companyRole: `
             alle info over de projecten die\n
             ik in goede banen probeer te leiden,\n
@@ -475,6 +508,7 @@ const marlonCharacters: MarlonCharactersType = Object.freeze({
         ...ROLES.PROJECT_MANAGER,
         fullName: 'Vincent Mouton',
         title: 'Happiness Manager',
+        startDate: '01/01/2008',
         possibleEffects: [...ROLES.PROJECT_MANAGER.possibleEffects, 'prototyping', 'office-manager'],
         companyRole: `
             prototypes, analyses\n
@@ -492,6 +526,7 @@ const marlonCharacters: MarlonCharactersType = Object.freeze({
     marieke: {
         ...ROLES.OFFICE_MANAGER,
         fullName: 'Marieke Vanderghote',
+        startDate: '01/01/2017',
         isOutOfoffice: true,
         companyRole: `
             alles (behalve IT\n
@@ -508,6 +543,7 @@ const marlonCharacters: MarlonCharactersType = Object.freeze({
     tina: {
         ...ROLES.MARKETING_MANAGER,
         fullName: 'Tina Van der Heyden',
+        startDate: '01/01/2019',
         companyRole: 'de cijfers achter een website',
         summary: `
             copywriting\n

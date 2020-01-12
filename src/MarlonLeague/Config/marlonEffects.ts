@@ -58,7 +58,7 @@ const marlonEffects: MarlonEffectsType = Object.freeze({
     'office-management': {
         name: 'office-management',
         emoji: '🛠',
-        emojiKey: 'hammer-and-wrench',
+        emojiKey: 'hammer_and_wrench',
         description: 'Remove all WIFI_DOWN, LICENCE_EXPIRED and LOW_BUDGET effects',
         isCard: true,
     },
@@ -66,7 +66,7 @@ const marlonEffects: MarlonEffectsType = Object.freeze({
     'office-manager': {
         name: 'office-manager',
         emoji: '🛠',
-        emojiKey: 'hammer-and-wrench',
+        emojiKey: 'hammer_and_wrench',
         description: 'Spawn an OFFICE_MANAGEMENT row effect, clearing all WIFI_DOWN, LICENCE_EXPIRED & LOW_BUDGET',
     },
     'name-collector': {
@@ -113,8 +113,8 @@ const marlonEffects: MarlonEffectsType = Object.freeze({
         emojiKey: 'control_knobs',
         description: 'Gain +1 for all JS & FE cards & add +1 to all JS & FE cards on your side of the field',
     },
-    'client-briefing': {
-        name: 'client-briefing',
+    consultancy: {
+        name: 'consultancy',
         emoji: '💁‍♂️',
         emojiKey: 'information_desk_person',
         description: "Play card on opponent's side of field, but draw 2 cards from your deck to your hand",

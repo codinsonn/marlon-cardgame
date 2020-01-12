@@ -119,8 +119,6 @@ const GameScreen = props => {
         return order.reduce((acc, rowKey) => ({ ...acc, [rowKey]: cards[rowKey] }), {});
     }, [cards]);
 
-    console.log({ cards, collectableCards });
-
     // -- Render --
 
     return (
@@ -138,34 +136,41 @@ const GameScreen = props => {
                     const cardOverflow = rowCards.length * PlayableCard.width - ROW_WIDTH + rowCards.length * 12;
                     const shouldOverflow = cardOverflow > 0;
                     const overflowFactor = cardOverflow / ROW_WIDTH > 0.5 ? 0.5 : cardOverflow / ROW_WIDTH;
+                    // Row Clickhandlers
                     const onPress = () => {
                         const cardsInRow = cards[rowKey].map(({ cardID }) => cardID);
                         const allowedCards = Object.values(collectableCards).filter(({ cardID, allowedRows }) => {
                             const alreadyPlayed = cardsInRow.includes(cardID);
                             const allowedInRow = allowedRows.includes(rowKey);
-                            console.log({ alreadyPlayed, allowedInRow });
                             return !alreadyPlayed && allowedInRow;
                         });
                         const newCardIndex = Math.round(Math.random() * allowedCards.length);
                         const newCard = allowedCards[newCardIndex];
-                        console.log({ newCardIndex, newCard, allowedCards });
                         if (newCard) setCards({ ...cards, [rowKey]: [...rowCards, newCard] });
                     };
+                    // Calculate row & card values
+                    let rowTotal = 0;
+                    const cardsWithValues = rowCards.map(card => {
+                        const currentValue = card.baseValue;
+                        rowTotal += currentValue;
+                        return { ...card, currentValue };
+                    });
+                    // Render row
                     return (
                         <GameRow bgColor={bgColor} isTopRow={rowIndex === 0} isBottomRow={rowIndex === 5}>
                             <RowTotal bgColor={totalBgColor}>
-                                <RowTotal.Text>{rowCards.length * 10}</RowTotal.Text>
+                                <RowTotal.Text>{rowTotal}</RowTotal.Text>
                             </RowTotal>
                             <CardRow
                                 justify={shouldOverflow ? 'flex-start' : 'center'}
                                 onPress={onPress}
                                 isCardContainer
                             >
-                                {rowCards.map((card, i) => (
+                                {cardsWithValues.map((card, i) => (
                                     <PlayableCard
                                         key={`${rowKey}-${JSON.stringify(card.cardID)}-${i}`}
                                         index={i}
-                                        card={card}
+                                        card={{ ...card }}
                                         overflowFactor={overflowFactor}
                                         shouldOverflow={shouldOverflow}
                                     />

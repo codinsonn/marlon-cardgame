@@ -89,8 +89,6 @@ const CardFront = animated(CardSide);
 const PlayableCard = props => {
     // Props
     const { card, index, overflowFactor, shouldOverflow } = props;
-    //const {  } = card;
-    console.log({ card });
 
     // State
     const [selected, setSelected] = useState(false);
@@ -106,14 +104,14 @@ const PlayableCard = props => {
         <DraggableCard style={{ transform: [{ translateX }] }} onPress={() => setSelected(s => !s)}>
             <CardFront selected={selected}>
                 <BaseValue>
-                    <ValueText>10</ValueText>
+                    <ValueText>{card.currentValue}</ValueText>
                 </BaseValue>
                 {card?.effect?.emojiKey && (
                     <EffectIcon>
-                        <Emoji name={card?.effect?.emojiKey} style={{ fontSize: isPhone ? 12 : 18 }} />
+                        <Emoji name={card.effect.emojiKey} style={{ fontSize: isPhone ? 12 : 18 }} />
                     </EffectIcon>
                 )}
-                <StyledImage source={card?.image} resizeMode="cover" />
+                <StyledImage source={card.image} resizeMode="cover" />
             </CardFront>
         </DraggableCard>
     );
