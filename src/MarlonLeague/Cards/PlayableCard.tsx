@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Image, Text, TouchableOpacity, Dimensions } from 'react-native';
+import { View, Image, Text, TouchableOpacity, Dimensions, Platform } from 'react-native';
 import styled, { css } from 'styled-components/native';
 import { animated, useSpring } from 'react-spring/native';
 import Emoji from 'react-native-emoji';
@@ -7,6 +7,7 @@ import Emoji from 'react-native-emoji';
 /* --- Constants ------------------------------------------------------------------------------ */
 
 const isPhone = Dimensions.get('window').width < 850;
+const isWeb = Platform.OS === 'web';
 
 const CARD_RATIO = 220 / 320;
 const CARD_HEIGHT = Dimensions.get('window').height / 8;
@@ -44,6 +45,7 @@ const CardSide = styled(View)`
 
 const FrontIconCSS = css`
     position: absolute;
+    display: flex;
     left: ${isPhone ? '4px' : '5px'};
     width: ${isPhone ? '20px' : '28px'};
     height: ${isPhone ? '20px' : '28px'};
@@ -51,6 +53,8 @@ const FrontIconCSS = css`
     justify-content: center;
     border-radius: ${isPhone ? '10' : '14px'};
     border-width: ${isPhone ? '2px' : '3px'};
+    ${({ isEmoji }) => (isEmoji && isWeb ? 'padding-left: 4px;' : '')}
+    ${({ isValue }) => (isValue && isWeb ? 'padding-bottom: 2px;' : '')}
     z-index: 100;
 `;
 
@@ -103,12 +107,15 @@ const PlayableCard = props => {
     return (
         <DraggableCard style={{ transform: [{ translateX }] }} onPress={() => setSelected(s => !s)}>
             <CardFront selected={selected}>
-                <BaseValue>
+                <BaseValue isValue>
                     <ValueText>{card.currentValue}</ValueText>
                 </BaseValue>
                 {card?.effect?.emojiKey && (
-                    <EffectIcon>
-                        <Emoji name={card.effect.emojiKey} style={{ fontSize: isPhone ? 12 : 18 }} />
+                    <EffectIcon isEmoji>
+                        <Emoji
+                            name={card.effect.emojiKey}
+                            style={{ fontSize: isPhone ? 11 : 17, textAlign: 'center' }}
+                        />
                     </EffectIcon>
                 )}
                 <StyledImage source={card.image} resizeMode="cover" />

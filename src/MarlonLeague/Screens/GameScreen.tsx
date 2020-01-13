@@ -157,7 +157,7 @@ const GameScreen = props => {
                     });
                     // Render row
                     return (
-                        <GameRow bgColor={bgColor} isTopRow={rowIndex === 0} isBottomRow={rowIndex === 5}>
+                        <GameRow key={rowKey} bgColor={bgColor} isTopRow={rowIndex === 0} isBottomRow={rowIndex === 5}>
                             <RowTotal bgColor={totalBgColor}>
                                 <RowTotal.Text>{rowTotal}</RowTotal.Text>
                             </RowTotal>

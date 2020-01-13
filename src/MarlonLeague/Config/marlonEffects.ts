@@ -16,7 +16,7 @@ const marlonEffects: MarlonEffectsType = Object.freeze({
     'remote-work': {
         name: 'remote-work',
         emoji: '🏡',
-        emojiKey: 'house-with-garden',
+        emojiKey: 'house_with_garden',
         description: 'Return any player card on your side of the field back to your hand',
         isCard: true,
     },
@@ -37,14 +37,14 @@ const marlonEffects: MarlonEffectsType = Object.freeze({
     'wifi-down': {
         name: 'wifi-down',
         emoji: '🙅‍♂️',
-        emojiKey: 'no-good-man',
+        emojiKey: 'no_good_man',
         description: 'Reduce the base values of all cards in the TECHNOLOGY row to 1 on both sides of the field',
         isCard: true,
     },
     'licence-expired': {
         name: 'licence-expired',
         emoji: '🔐',
-        emojiKey: 'closed-lock-with-key',
+        emojiKey: 'closed_lock_with_key',
         description: 'Reduce the base values of all cards in the DESIGN row to 1 on both sides of the field',
         isCard: true,
     },
@@ -72,7 +72,7 @@ const marlonEffects: MarlonEffectsType = Object.freeze({
     'name-collector': {
         name: 'name-collector',
         emoji: '👥',
-        emojiKey: 'busts-in-silhouettte',
+        emojiKey: 'busts_in_silhouette',
         description:
             'Double the values of all cards on your side that share the same name (cumulative, incl. copies of this card)',
     },
