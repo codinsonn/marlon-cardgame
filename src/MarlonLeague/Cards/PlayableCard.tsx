@@ -53,8 +53,8 @@ const FrontIconCSS = css`
     justify-content: center;
     border-radius: ${isPhone ? '10' : '14px'};
     border-width: ${isPhone ? '2px' : '3px'};
-    ${({ isEmoji }) => (isEmoji && isWeb ? 'padding-left: 4px;' : '')}
-    ${({ isValue }) => (isValue && isWeb ? 'padding-bottom: 2px;' : '')}
+    ${({ isEmoji }) => (isEmoji && isWeb ? `padding-left: ${isPhone ? 3 : 4}px;` : '')}
+    ${({ isValue }) => (isValue && isWeb ? `padding-bottom: ${isPhone ? 0 : 2}px;` : '')}
     z-index: 100;
 `;
 
