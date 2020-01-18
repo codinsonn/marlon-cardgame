@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { View, Image, Text, TouchableOpacity, Dimensions, Platform } from 'react-native';
 import styled, { css } from 'styled-components/native';
 import { animated, useSpring } from 'react-spring/native';
@@ -96,6 +96,10 @@ const PlayableCard = props => {
 
     // State
     const [selected, setSelected] = useState(false);
+    const [dimensions, setDimensions] = useState({ x: 0, y: 0, width: 0, height: 0 });
+
+    // Measure parent dimensions from url
+    const measureWidth = useCallback(({ nativeEvent }) => setDimensions({ ...nativeEvent.layout }), []);
 
     // Springs
     const { translateX } = useSpring({
@@ -103,9 +107,19 @@ const PlayableCard = props => {
         config: { mass: 5, tension: 500, friction: 80 },
     });
 
+    // onLongPress
+    const onLongPress = useCallback(() => {
+        if (props.onLongPress) props.onLongPress(card, dimensions);
+    }, [card, dimensions]);
+
     // Render
     return (
-        <DraggableCard style={{ transform: [{ translateX }] }} onPress={() => setSelected(s => !s)}>
+        <DraggableCard
+            style={{ transform: [{ translateX }] }}
+            onPress={props.onPress}
+            onLongPress={onLongPress}
+            onLayout={measureWidth}
+        >
             <CardFront selected={selected}>
                 <BaseValue isValue>
                     <ValueText>{card.currentValue}</ValueText>

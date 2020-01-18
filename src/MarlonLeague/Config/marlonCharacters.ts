@@ -87,89 +87,45 @@ const marlonCharacters: MarlonCharactersType = Object.freeze({
         title: 'Team Lead JavaScript',
         possibleEffects: [...ROLES.JAVASCRIPT.possibleEffects, 'team-lead'],
         startDate: '01/01/2009',
-        companyRole: `
-            vragen rond het\n
-            JavaScript eco systeem
-        `,
-        summary: `
-            JS team gerelateerde vragen\n
-            operations stuff (CI, Heroku, ...)\n
-            GIT\n
-            auto's & all things Toyota\n
-            games & esports\n
-            elektronica (3D printing, Arduino, ...)
-        `,
+        companyRole: 'vragen rond het\nJavaScript eco systeem',
+        summary:
+            "JS team gerelateerde vragen\noperations stuff (CI, Heroku, ...)\nGIT\nauto's & all things Toyota\ngames & esports\nelektronica (3D printing, Arduino, ...)",
     },
     nico: {
         ...ROLES.JAVASCRIPT,
         fullName: 'Nico Verkest',
         startDate: '01/01/2015',
         companyRole: 'JavaScript',
-        summary: `
-            React & React-Native\n
-            2D game engines\n
-            moestuinieren\n
-            WebGL
-        `,
+        summary: 'React & React-Native\n2D game engines\nmoestuinieren\nWebGL',
     },
     brian: {
         ...ROLES.JAVASCRIPT,
         fullName: 'Brian Roels',
         startDate: '01/01/2019',
         companyRole: 'React, UI-implementatie',
-        summary: `
-            classificatie, objectdetectie\n
-            Machine Learning\n
-            vragen over slagwerk\n
-            ska-punk, bigband, jazz\n
-            hardrock & schlagers\n
-            audiogerelateerde zaken\n
-            mobiele apparaten
-        `,
+        summary:
+            'classificatie, objectdetectie\nMachine Learning\nvragen over slagwerk\nska-punk, bigband, jazz\nhardrock & schlagers\naudiogerelateerde zaken\nmobiele apparaten',
     },
     robin: {
         ...ROLES.JAVASCRIPT,
         fullName: 'Robin Kossi',
         startDate: '01/01/2017',
-        companyRole: `
-            JavaScript development\n
-            (React, Node.JS, CI integratie, ...)
-        `,
-        summary: `
-            JS typing (TS/Flow)\n
-            Webpack black magic\n
-            tabs > spaces\n
-            Overwatch connoiseur
-        `,
+        companyRole: 'JavaScript development\n(React, Node.JS, CI integratie, ...)',
+        summary: 'JS typing (TS/Flow)\nWebpack black magic\ntabs > spaces\nOverwatch connoiseur',
     },
     thorr: {
         ...ROLES.JAVASCRIPT,
         fullName: 'Thorr Stevens',
         startDate: '01/01/2018',
         companyRole: 'Fratello serverside rendering',
-        summary: `
-            React hooks of componenten\n
-            React Native apps\n
-            Node & JavaScript\n
-            Marvel films\n
-            thunder & lightning
-        `,
+        summary: 'React hooks of componenten\nReact Native apps\nNode & JavaScript\nMarvel films\nthunder & lightning',
     },
     tuur: {
         ...ROLES.JAVASCRIPT,
         fullName: 'Tuur Lievens',
         startDate: '01/01/2019',
-        companyRole: `
-            Toyota retailer &\n
-            car on display app
-        `,
-        summary: `
-            PC hardware\n
-            DIY domotica\n
-            Android apps\n
-            VR / AR\n
-            random weetjes
-        `,
+        companyRole: 'Toyota retailer &\ncar on display app',
+        summary: 'PC hardware\nDIY domotica\nAndroid apps\nVR / AR\nrandom weetjes',
     },
     thomasML: {
         ...ROLES.JAVASCRIPT,
@@ -178,11 +134,7 @@ const marlonCharacters: MarlonCharactersType = Object.freeze({
         isOutOfoffice: true,
         possibleEffects: [...ROLES.JAVASCRIPT.possibleEffects, 'name-collector'],
         companyRole: 'JavaScript/Node',
-        summary: `
-            Vue\n
-            Svelte\n
-            honden
-        `,
+        summary: 'Vue\nSvelte\nhonden',
     },
     // --- PHP Team ---
     dieter: {
@@ -192,62 +144,36 @@ const marlonCharacters: MarlonCharactersType = Object.freeze({
         startDate: '01/01/2012',
         possibleEffects: [...ROLES.BACK_END.possibleEffects, 'team-lead'],
         companyRole: 'PHP, serverconfiguratie en webshops',
-        summary: `
-            iets met 4411 keer parkeren\n
-            toelichting bij karakter-\n
-            stoornissen van collega's\n
-            sfeerbeheer\n
-            windsurfen\n
-            pasta
-        `,
+        summary:
+            "iets met 4411 keer parkeren\ntoelichting bij karakter-\nstoornissen van collega's\nsfeerbeheer\nwindsurfen\npasta",
     },
     brechtB: {
         ...ROLES.BACK_END,
         fullName: 'Brecht Bonte',
         startDate: '01/01/2011',
         companyRole: 'Fratello gerelateerde backend zaken',
-        summary: `
-            PHPtorm pro-tips™️\n
-            Karate\n
-            Wing Chun\n
-            hoe je een hond\n
-            niet moet opvoeden
-        `,
+        summary: 'PHPtorm pro-tips™️\nKarate\nWing Chun\nhoe je een hond\nniet moet opvoeden',
     },
     frederikDP: {
         ...ROLES.BACK_END,
         fullName: 'Frederik De Paepe',
         startDate: '01/01/2010',
         companyRole: 'ontwikkeling in PHP',
-        summary: `
-            Fratello CMS\n
-            Rusland en de Russische taal\n
-            Node & JavaScript\n
-            (koers)fietsen
-        `,
+        summary: 'Fratello CMS\nRusland en de Russische taal\nNode & JavaScript\n(koers)fietsen',
     },
     manuel: {
         ...ROLES.BACK_END,
         fullName: 'Manuel Heye',
         startDate: '01/01/2016',
         companyRole: 'PHP, Fratello, SMS-parkeren',
-        summary: `
-            cafés in Gent\n
-            frietjes\n
-            verbouwen met Roger
-        `,
+        summary: 'cafés in Gent\nfrietjes\nverbouwen met Roger',
     },
     mathieu: {
         ...ROLES.BACK_END,
         fullName: 'Mathieu Duffeler',
         startDate: '01/01/2012',
         companyRole: 'Daikin, VDAB, PHP',
-        summary: `
-            security\n
-            pentesting\n
-            Inspirational quotes\n
-            Apex Legends
-        `,
+        summary: 'security\npentesting\nInspirational quotes\nApex Legends',
     },
     rubenC: {
         ...ROLES.BACK_END,
@@ -255,12 +181,7 @@ const marlonCharacters: MarlonCharactersType = Object.freeze({
         startDate: '01/01/2019',
         possibleEffects: [...ROLES.BACK_END.possibleEffects, 'name-collector'],
         companyRole: 'PHP-ontwikkeling',
-        summary: `
-            how to be a nood at the company\n
-            RPG en LARP\n
-            boardgam410%@!? cat-typos\n
-            metal (the music genre)
-        `,
+        summary: 'how to be a nood at the company\nRPG en LARP\nboardgam410%@!? cat-typos\nmetal (the music genre)',
     },
     rubenH: {
         ...ROLES.BACK_END,
@@ -268,11 +189,7 @@ const marlonCharacters: MarlonCharactersType = Object.freeze({
         startDate: '01/01/2016',
         possibleEffects: [...ROLES.BACK_END.possibleEffects, 'name-collector'],
         companyRole: 'vragen over PHP',
-        summary: `
-            MySql\n
-            scouts(kampen)\n
-            Light themes
-        `,
+        summary: 'MySql\nscouts(kampen)\nLight themes',
     },
     // --- Front-End Team ---
     davy: {
@@ -281,68 +198,30 @@ const marlonCharacters: MarlonCharactersType = Object.freeze({
         title: 'Team Lead Front-End',
         startDate: '01/01/2008',
         possibleEffects: [...ROLES.FRONT_END.possibleEffects, 'consultancy', 'team-lead'],
-        companyRole: `
-            snelle toegankelijke en kick-ass\n
-            Front-Ends voor je website of app
-        `,
-        summary: `
-            HTML, CSS & JS\n
-            cargofietsen\n
-            website performance\n
-            technical SEO & Accessibility\n
-            fotografie & video\n
-            moestuinieren & ecologisch leven
-        `,
+        companyRole: 'snelle toegankelijke en kick-ass\nFront-Ends voor je website of app',
+        summary:
+            'HTML, CSS & JS\ncargofietsen\nwebsite performance\ntechnical SEO & Accessibility\nfotografie & video\nmoestuinieren & ecologisch leven',
     },
     brechtDR: {
         ...ROLES.FRONT_END,
         fullName: 'Brecht De Ruyte',
         startDate: '01/01/2016',
-        companyRole: `
-            vragen in verband met lay-out,\n
-            animaties, performance,\n
-            technische SEO en accessibility
-        `,
-        summary: `
-            BBQ\n
-            Manga\n
-            Japan\n
-            fotografie\n
-            games
-        `,
+        companyRole: 'vragen in verband met lay-out,\nanimaties, performance,\ntechnische SEO en accessibility',
+        summary: 'BBQ\nManga\nJapan\nfotografie\ngames',
     },
     lisette: {
         ...ROLES.FRONT_END,
         fullName: 'Lisette Mazure',
         startDate: '01/01/2019',
-        companyRole: `
-            the exciting side\n
-            of Front-end
-        `,
-        summary: `
-            all HTML & CSS things\n
-            accessibility\n
-            Depeche Mode\n
-            tennis\n
-            make-up
-        `,
+        companyRole: 'the exciting side\nof Front-end',
+        summary: 'all HTML & CSS things\naccessibility\nDepeche Mode\ntennis\nmake-up',
     },
     sebastian: {
         ...ROLES.FRONT_END,
         fullName: 'Sebastian Viaene',
         startDate: '01/01/2014',
-        companyRole: `
-            Front-End gerelateerde zaken\n
-            zoals HTML, CSS, DOM, ...
-        `,
-        summary: `
-            JavaScript\n
-            browserskills\n
-            performantie & toegankelijkheid\n
-            indieweb\n
-            straatfotografie\n
-            bier
-        `,
+        companyRole: 'Front-End gerelateerde zaken\nzoals HTML, CSS, DOM, ...',
+        summary: 'JavaScript\nbrowserskills\nperformantie & toegankelijkheid\nindieweb\nstraatfotografie\nbier',
     },
     // --- UX Design Team ---
     gert: {
@@ -351,16 +230,8 @@ const marlonCharacters: MarlonCharactersType = Object.freeze({
         title: 'Team Lead Design',
         startDate: '01/01/2011',
         possibleEffects: [...ROLES.UX_DESIGN.possibleEffects, 'team-lead'],
-        companyRole: `
-            webdesign, prototypes\n
-            en usability
-        `,
-        summary: `
-            beestjes groot en klein\n
-            tekenen en knutselen\n
-            electronica projecten\n
-            robots
-        `,
+        companyRole: 'webdesign, prototypes\nen usability',
+        summary: 'beestjes groot en klein\ntekenen en knutselen\nelectronica projecten\nrobots',
     },
     niels: {
         ...ROLES.UX_DESIGN,
@@ -369,30 +240,16 @@ const marlonCharacters: MarlonCharactersType = Object.freeze({
         title: 'Designer',
         startDate: '01/01/2015',
         companyRole: 'de facade van een website',
-        summary: `
-            webdesign\n
-            grafish ontwerp\n
-            Happy Monster Club\n
-            Verkleinen van een logo en\n
-            vergroten (als het echt moet)\n
-            pixelneukerij
-        `,
+        summary:
+            'webdesign\ngrafish ontwerp\nHappy Monster Club\nVerkleinen van een logo en\nvergroten (als het echt moet)\npixelneukerij',
     },
     olga: {
         ...ROLES.UX_DESIGN,
         fullName: 'Olga Maertens',
         title: 'Analyst',
         startDate: '01/01/2019',
-        companyRole: `
-            alles over analyse\n
-            en prototypes
-        `,
-        summary: `
-            usability\n
-            informatie-architectuur\n
-            jazzpiano\n
-            triviale taalweetjes
-        `,
+        companyRole: 'alles over analyse\nen prototypes',
+        summary: 'usability\ninformatie-architectuur\njazzpiano\ntriviale taalweetjes',
     },
     // --- Project Management Team ---
     frederikC: {
@@ -400,109 +257,53 @@ const marlonCharacters: MarlonCharactersType = Object.freeze({
         fullName: 'Frederik Claerhout',
         startDate: '01/01/2008',
         title: 'CEO',
-        companyRole: `
-            een doordachte aanpak\n
-            van je digitale business
-        `,
-        summary: `
-            e-commerce trends\n
-            verzamelen van functionele vereisten\n
-            web app development\n
-            continuous testing\n
-            project management\n
-            Kaizen\n
-            de Scoville chart
-        `,
+        companyRole: 'een doordachte aanpak\nvan je digitale business',
+        summary:
+            'e-commerce trends\nverzamelen van functionele vereisten\nweb app development\ncontinuous testing\nproject management\nKaizen\nde Scoville chart',
     },
     elke: {
         ...ROLES.PROJECT_MANAGER,
         fullName: 'Elke De Vleeschouwer',
         startDate: '01/01/2012',
         companyRole: 'Toyota gerelateerde vragen',
-        summary: `
-            planning\n
-            project management\n
-            Agile way of working\n
-            Jira\n
-            omnisport\n
-            mindfullness
-        `,
+        summary: 'planning\nproject management\nAgile way of working\nJira\nomnisport\nmindfullness',
     },
     gerda: {
         ...ROLES.PROJECT_MANAGER,
         fullName: 'Gerda Cobbaert',
         startDate: '01/01/2018',
         companyRole: 'Daikin & Dockx Rental',
-        summary: `
-            great coffee\n
-            nice places to visit\n
-            ideas on how not to grow plants\n
-            IKEA knowledge
-        `,
+        summary: 'great coffee\nnice places to visit\nideas on how not to grow plants\nIKEA knowledge',
     },
     lien: {
         ...ROLES.PROJECT_MANAGER,
         fullName: 'Lien Vermassen',
         startDate: '01/01/2015',
-        companyRole: `
-            de ins en outs van\n
-            het Fratello framework
-        `,
-        summary: `
-            project management\n
-            roller derby\n
-            rainbows & unicorns\n
-            ABBA
-        `,
+        companyRole: 'de ins en outs van\nhet Fratello framework',
+        summary: 'project management\nroller derby\nrainbows & unicorns\nABBA',
     },
     sofie: {
         ...ROLES.PROJECT_MANAGER,
         fullName: 'Sofie Verschraegen',
         startDate: '01/01/2019',
-        companyRole: `
-            het in goede banen\n
-            leiden van projecten
-        `,
-        summary: `
-            communicatie en bemiddelen\n
-            tussen Marlon en de klant\n
-            inplannen van developers\n
-            op restaurant gaan\n
-            alternatieve muziekgenres
-        `,
+        companyRole: 'het in goede banen\nleiden van projecten',
+        summary:
+            'communicatie en bemiddelen\ntussen Marlon en de klant\ninplannen van developers\nop restaurant gaan\nalternatieve muziekgenres',
     },
     thomasC: {
         ...ROLES.PROJECT_MANAGER,
         fullName: 'Thomas Crepain',
         startDate: '01/01/2015',
         possibleEffects: [...ROLES.PROJECT_MANAGER.possibleEffects, 'name-collector'],
-        companyRole: `
-            de projecten die over parkeren\n
-            of elektriciteit gaan
-        `,
-        summary: `
-            planning\n
-            die *@#$%! filter in Jira\n
-            dat *@#$%! dashboard in Jira\n
-            koffie\n
-            scouting
-        `,
+        companyRole: 'de projecten die over parkeren\nof elektriciteit gaan',
+        summary: 'planning\ndie *@#$%! filter in Jira\ndat *@#$%! dashboard in Jira\nkoffie\nscouting',
     },
     veerle: {
         ...ROLES.PROJECT_MANAGER,
         fullName: 'Veerle Van den Bulcke',
         startDate: '01/01/2018',
-        companyRole: `
-            alle info over de projecten die\n
-            ik in goede banen probeer te leiden,\n
-            maar vooral voor Daim'kes
-        `,
-        summary: `
-            project management\n
-            Padel\n
-            pateekes & pralines\n
-            pounding techno music
-        `,
+        companyRole: "alle info over de projecten die\nik in goede banen probeer te leiden,\nmaar vooral voor Daim'kes",
+        summary: 'project management\nPadel\npateekes & pralines\npounding techno music',
     },
     vincent: {
         ...ROLES.PROJECT_MANAGER,
@@ -510,17 +311,8 @@ const marlonCharacters: MarlonCharactersType = Object.freeze({
         title: 'Happiness Manager',
         startDate: '01/01/2008',
         possibleEffects: [...ROLES.PROJECT_MANAGER.possibleEffects, 'prototyping', 'office-manager'],
-        companyRole: `
-            prototypes, analyses\n
-            en een goed gesprek
-        `,
-        summary: `
-            je e-mail en software accounts\n
-            Confluence & Jira\n
-            mijn VISA-kaart\n
-            de Gantoise\n
-            LEGO blokjes zoeken
-        `,
+        companyRole: 'prototypes, analyses\nen een goed gesprek',
+        summary: 'je e-mail en software accounts\nConfluence & Jira\nmijn VISA-kaart\nde Gantoise\nLEGO blokjes zoeken',
     },
     // --- Other ---
     marieke: {
@@ -528,30 +320,15 @@ const marlonCharacters: MarlonCharactersType = Object.freeze({
         fullName: 'Marieke Vanderghote',
         startDate: '01/01/2017',
         isOutOfoffice: true,
-        companyRole: `
-            alles (behalve IT\n
-            gerelateerde issues)
-        `,
-        summary: `
-            je loon\n
-            het kopieertoestel\n
-            roze post-its ipv groene\n
-            een kapotte stoel\n
-            een tekort aan koffiebonen
-        `,
+        companyRole: 'alles (behalve IT\ngerelateerde issues)',
+        summary: 'je loon\nhet kopieertoestel\nroze post-its ipv groene\neen kapotte stoel\neen tekort aan koffiebonen',
     },
     tina: {
         ...ROLES.MARKETING_MANAGER,
         fullName: 'Tina Van der Heyden',
         startDate: '01/01/2019',
         companyRole: 'de cijfers achter een website',
-        summary: `
-            copywriting\n
-            SEO/SEA\n
-            social media campagnes\n
-            cosplay\n
-            snail mail
-        `,
+        summary: 'copywriting\nSEO/SEA\nsocial media campagnes\ncosplay\nsnail mail',
     },
 });
 

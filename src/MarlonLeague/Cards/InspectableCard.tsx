@@ -3,6 +3,8 @@ import { View, Image, Text, TouchableOpacity, Dimensions } from 'react-native';
 import styled, { css } from 'styled-components/native';
 import { useSpring, animated } from 'react-spring/native';
 import Emoji from 'react-native-emoji';
+// Types
+import { MarlonCardType } from '../../MarlonLeague/Config/marlonCards';
 // Components
 import { InfoIcon } from '../../leagueRegistry';
 
@@ -15,7 +17,7 @@ const ROW_HEIGHT = height / 8;
 
 const MIN_CARD_SCALE = ROW_HEIGHT / 320;
 const MID_CARD_SCALE = MIN_CARD_SCALE * 2;
-const MAX_CARD_SCALE = 1;
+const MAX_CARD_SCALE = 1.5;
 
 const CARD_SCALES = {
     min: MIN_CARD_SCALE,
@@ -153,10 +155,14 @@ const CardInfo = animated(StyledCardInfo);
 /* --- <InspectableCard/> ------------------------------------------------------------------------------ */
 
 const InspectableCard = props => {
+    // Props
+    const { cardStartPosition, ...cardProps } = props;
+    const card: MarlonCardType = cardProps;
+
     // State
     const [selected, setSelected] = useState(false);
     const [flipped, setFlipped] = useState(false);
-    const [cardScale, setCardScale] = useState('min');
+    const [cardScale, setCardScale] = useState('mid');
     const [showInfo, setShowInfo] = useState(false);
 
     // Springs
@@ -172,6 +178,8 @@ const InspectableCard = props => {
         config: { mass: 5, tension: 500, friction: 80 },
     });
     const { infoOpacity } = useSpring({ infoOpacity: showInfo ? 1 : 0 });
+
+    console.log(card);
 
     // Render
     return (
@@ -193,28 +201,25 @@ const InspectableCard = props => {
                 <BaseValue>
                     <ValueText>10</ValueText>
                 </BaseValue>
-                <EffectIcon>
-                    <Emoji name="handshake" style={{ fontSize: 40 }} />
-                </EffectIcon>
-                <StyledImage source={require('../../../assets/ppl/Thorr.jpg')} resizeMode="cover" />
+                {card?.effect?.emojiKey && (
+                    <EffectIcon>
+                        <Emoji name={card?.effect?.emojiKey} style={{ fontSize: 40 }} />
+                    </EffectIcon>
+                )}
+                <StyledImage source={card.image} resizeMode="cover" />
             </CardFront>
             <CardBack style={{ opacity: backOpacity, transform: [{ perspective }, { rotateY: backRotateY }] }}>
                 <InfoToggle onPress={() => setShowInfo(!showInfo)}>
                     <InfoIcon />
                 </InfoToggle>
                 <CardInfo>
-                    <PersonName>Thorr Stevens</PersonName>
-                    <PersonRole>JavaScript developer</PersonRole>
+                    <PersonName>{card.fullName}</PersonName>
+                    <PersonRole>{card.title}</PersonRole>
                     <DividerLine />
                     <Subtitle>
-                        <Emoji name="handshake" /> Pair Programming
+                        <Emoji name={card?.effect?.emojiKey} /> {card?.effect?.title}
                     </Subtitle>
-                    <Summary>
-                        Double the values of all{'\n'}
-                        team members in this row{'\n'}
-                        who also have the{'\n'}
-                        "Pair Programming" effect.
-                    </Summary>
+                    <Summary>{`${card?.effect?.description}`}</Summary>
                     <Subtitle>
                         <Emoji name="sparkle" /> 10 current value
                     </Subtitle>
@@ -225,19 +230,13 @@ const InspectableCard = props => {
                     </Summary>
                 </CardInfo>
                 <CardInfo style={{ opacity: infoOpacity }}>
-                    <PersonName>Thorr Stevens</PersonName>
-                    <PersonRole>JavaScript developer</PersonRole>
+                    <PersonName>{card.fullName}</PersonName>
+                    <PersonRole>{card.title}</PersonRole>
                     <DividerLine />
                     <Subtitle>Je moet bij mij zijn voor</Subtitle>
-                    <Summary>Fratello serverside rendering</Summary>
+                    <Summary>{`${card.companyRole}`}</Summary>
                     <Subtitle>Maar ook voor info over</Subtitle>
-                    <Summary>
-                        React hooks of componenten{'\n'}
-                        React Native apps{'\n'}
-                        Node & JavaScript{'\n'}
-                        Marvel films{'\n'}
-                        thunder & lightning
-                    </Summary>
+                    <Summary>{`${card.summary}`}</Summary>
                 </CardInfo>
             </CardBack>
         </DraggableCard>

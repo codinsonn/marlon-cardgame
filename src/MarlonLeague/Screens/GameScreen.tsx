@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useCallback } from 'react';
 import { View, Text, TouchableOpacity, Dimensions } from 'react-native';
 import styled from 'styled-components/native';
 // Components
@@ -23,7 +23,7 @@ const GameContainer = styled(View)`
     justify-content: center;
 `;
 
-const InspectionContainer = styled(View)`
+const InspectionContainer = styled(TouchableOpacity)`
     display: flex;
     position: absolute;
     top: 0px;
@@ -32,7 +32,7 @@ const InspectionContainer = styled(View)`
     width: 100%;
     align-items: center;
     justify-content: center;
-    background-color: rgba(0, 0, 0, 0.9);
+    background-color: rgba(0, 0, 0, 0.7);
     z-index: 200;
 `;
 
@@ -96,6 +96,7 @@ const GameScreen = props => {
     const { collectableCards, PlayableCard, InspectableCard } = props;
 
     // State
+    const [inspectedCard, setInspectedCard] = useState(null);
     const [cards, setCards] = useState({
         'opponent-business': [],
         'opponent-design': [],
@@ -119,15 +120,38 @@ const GameScreen = props => {
         return order.reduce((acc, rowKey) => ({ ...acc, [rowKey]: cards[rowKey] }), {});
     }, [cards]);
 
+    const onInspectCard = useCallback(
+        (cardToInspect, cardStartPosition) => {
+            setInspectedCard({ ...cardToInspect, cardStartPosition });
+        },
+        [cards],
+    );
+
+    // Row Clickhandler
+    const onAddCard = useCallback(
+        rowKey => {
+            const cardsInRow = cards[rowKey].map(({ cardID }) => cardID);
+            const allowedCards = Object.values(collectableCards).filter(({ cardID, allowedRows }) => {
+                const alreadyPlayed = cardsInRow.includes(cardID);
+                const allowedInRow = allowedRows.includes(rowKey);
+                return !alreadyPlayed && allowedInRow;
+            });
+            const newCardIndex = Math.round(Math.random() * allowedCards.length);
+            const newCard = allowedCards[newCardIndex];
+            if (newCard) setCards({ ...cards, [rowKey]: [...cards[rowKey], newCard] });
+        },
+        [cards],
+    );
+
     // -- Render --
 
     return (
         <GameContainer>
-            {/*/}
-            <InspectionContainer>
-                <InspectableCard />
-            </InspectionContainer>
-            {/**/}
+            {!!inspectedCard && (
+                <InspectionContainer onPress={() => setInspectedCard(null)}>
+                    <InspectableCard {...inspectedCard} />
+                </InspectionContainer>
+            )}
             <GameField>
                 {Object.entries(sortedRows).map(([rowKey, rowCards], rowIndex) => {
                     const arrIndex = rowIndex < 3 ? rowIndex : 5 - rowIndex;
@@ -136,18 +160,6 @@ const GameScreen = props => {
                     const cardOverflow = rowCards.length * PlayableCard.width - ROW_WIDTH + rowCards.length * 12;
                     const shouldOverflow = cardOverflow > 0;
                     const overflowFactor = cardOverflow / ROW_WIDTH > 0.5 ? 0.5 : cardOverflow / ROW_WIDTH;
-                    // Row Clickhandlers
-                    const onPress = () => {
-                        const cardsInRow = cards[rowKey].map(({ cardID }) => cardID);
-                        const allowedCards = Object.values(collectableCards).filter(({ cardID, allowedRows }) => {
-                            const alreadyPlayed = cardsInRow.includes(cardID);
-                            const allowedInRow = allowedRows.includes(rowKey);
-                            return !alreadyPlayed && allowedInRow;
-                        });
-                        const newCardIndex = Math.round(Math.random() * allowedCards.length);
-                        const newCard = allowedCards[newCardIndex];
-                        if (newCard) setCards({ ...cards, [rowKey]: [...rowCards, newCard] });
-                    };
                     // Calculate row & card values
                     let rowTotal = 0;
                     const cardsWithValues = rowCards.map(card => {
@@ -163,7 +175,7 @@ const GameScreen = props => {
                             </RowTotal>
                             <CardRow
                                 justify={shouldOverflow ? 'flex-start' : 'center'}
-                                onPress={onPress}
+                                onPress={() => onAddCard(rowKey)}
                                 isCardContainer
                             >
                                 {cardsWithValues.map((card, i) => (
@@ -173,6 +185,8 @@ const GameScreen = props => {
                                         card={{ ...card }}
                                         overflowFactor={overflowFactor}
                                         shouldOverflow={shouldOverflow}
+                                        onPress={() => onAddCard(rowKey)}
+                                        onLongPress={onInspectCard}
                                     />
                                 ))}
                             </CardRow>
