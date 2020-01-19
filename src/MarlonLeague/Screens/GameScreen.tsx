@@ -96,6 +96,7 @@ const GameScreen = props => {
     const { collectableCards, PlayableCard, InspectableCard } = props;
 
     // State
+    const [isInspecting, setIsInspecting] = useState(false);
     const [inspectedCard, setInspectedCard] = useState(null);
     const [cards, setCards] = useState({
         'opponent-business': [],
@@ -118,10 +119,11 @@ const GameScreen = props => {
             'business',
         ];
         return order.reduce((acc, rowKey) => ({ ...acc, [rowKey]: cards[rowKey] }), {});
-    }, [cards]);
+    }, [cards, inspectedCard]);
 
     const onInspectCard = useCallback(
         (cardToInspect, cardStartPosition) => {
+            setIsInspecting(true);
             setInspectedCard({ ...cardToInspect, cardStartPosition });
         },
         [cards],
@@ -148,8 +150,13 @@ const GameScreen = props => {
     return (
         <GameContainer>
             {!!inspectedCard && (
-                <InspectionContainer onPress={() => setInspectedCard(null)}>
-                    <InspectableCard {...inspectedCard} />
+                <InspectionContainer
+                    onPress={() => {
+                        setIsInspecting(false);
+                        setTimeout(() => setInspectedCard(null), 600);
+                    }}
+                >
+                    <InspectableCard {...inspectedCard} isInspecting={isInspecting} />
                 </InspectionContainer>
             )}
             <GameField>
@@ -182,6 +189,8 @@ const GameScreen = props => {
                                     <PlayableCard
                                         key={`${rowKey}-${JSON.stringify(card.cardID)}-${i}`}
                                         index={i}
+                                        isVisible={!inspectedCard || inspectedCard.cardID !== card.cardID}
+                                        cardsInRow={cardsWithValues.length}
                                         card={{ ...card }}
                                         overflowFactor={overflowFactor}
                                         shouldOverflow={shouldOverflow}

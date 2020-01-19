@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { View, Image, Text, TouchableOpacity, Dimensions, Platform } from 'react-native';
 import styled, { css } from 'styled-components/native';
 import { animated, useSpring } from 'react-spring/native';
@@ -30,7 +30,7 @@ const StyledCard = styled(TouchableOpacity)`
     width: ${CARD_WIDTH}px;
     height: ${CARD_HEIGHT}px;
     ${borderRadiusCSS}
-    opacity: 1;
+    opacity: ${({ isVisible }) => (isVisible ? 1 : 0)};
     z-index: 100;
 `;
 
@@ -38,7 +38,6 @@ const CardSide = styled(View)`
     position: absolute;
     ${fillParentCSS}
     ${borderRadiusCSS}
-    ${({ selected }) => (selected ? 'border: #C5C7CA solid 2px;' : '')}
     overflow: hidden;
     background-color: #fff;
 `;
@@ -92,18 +91,31 @@ const CardFront = animated(CardSide);
 
 const PlayableCard = props => {
     // Props
-    const { card, index, overflowFactor, shouldOverflow } = props;
+    const { card, index, cardsInRow, overflowFactor, shouldOverflow, isVisible } = props;
 
     // State
-    const [selected, setSelected] = useState(false);
-    const [dimensions, setDimensions] = useState({ x: 0, y: 0, width: 0, height: 0 });
+    const [dimensions, setDimensions] = useState({ fx: 0, fy: 0, cWidth: 0, cHeight: 0, px: 0, py: 0 });
+    const [didMount, setDidMount] = useState(false);
+    useEffect(() => setDidMount(true), []);
 
     // Measure parent dimensions from url
-    const measureWidth = useCallback(({ nativeEvent }) => setDimensions({ ...nativeEvent.layout }), []);
+    const cardRef = useRef();
+    const measureWidth = useCallback(() => {
+        if (!!cardRef.current) {
+            // @ts-ignore
+            const cardNode = cardRef.current.getNode();
+            cardNode.measure((fx, fy, cWidth, cHeight, px, py) => {
+                setDimensions({ fx, fy, cWidth, cHeight, px, py });
+            });
+        }
+    }, [cardRef.current, cardsInRow]);
+    useEffect(() => measureWidth(), [cardsInRow]);
 
     // Springs
     const { translateX } = useSpring({
-        translateX: shouldOverflow ? `${index * (8 - CARD_WIDTH) * overflowFactor + 8}px` : `${index * 8}px`,
+        translateX: shouldOverflow
+            ? `${index * (8 - CARD_WIDTH) * overflowFactor + 8 + (didMount ? 0 : CARD_WIDTH)}px`
+            : `${cardsInRow === 1 ? 0 : index * 8 - cardsInRow * 3 + (didMount ? 0 : CARD_WIDTH)}px`,
         config: { mass: 5, tension: 500, friction: 80 },
     });
 
@@ -115,12 +127,15 @@ const PlayableCard = props => {
     // Render
     return (
         <DraggableCard
+            key={`${card.cardID}-${isVisible}`}
+            ref={cardRef}
             style={{ transform: [{ translateX }] }}
+            isVisible={isVisible}
             onPress={props.onPress}
             onLongPress={onLongPress}
             onLayout={measureWidth}
         >
-            <CardFront selected={selected}>
+            <CardFront>
                 <BaseValue isValue>
                     <ValueText>{card.currentValue}</ValueText>
                 </BaseValue>

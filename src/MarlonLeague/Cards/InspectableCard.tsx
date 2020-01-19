@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Image, Text, TouchableOpacity, Dimensions } from 'react-native';
 import styled, { css } from 'styled-components/native';
 import { useSpring, animated } from 'react-spring/native';
@@ -12,18 +12,8 @@ import { InfoIcon } from '../../leagueRegistry';
 
 const perspective = 1000;
 
-const { height } = Dimensions.get('window');
-const ROW_HEIGHT = height / 8;
-
-const MIN_CARD_SCALE = ROW_HEIGHT / 320;
-const MID_CARD_SCALE = MIN_CARD_SCALE * 2;
-const MAX_CARD_SCALE = 1.5;
-
-const CARD_SCALES = {
-    min: MIN_CARD_SCALE,
-    mid: MID_CARD_SCALE,
-    max: MAX_CARD_SCALE,
-};
+const { height, width } = Dimensions.get('window');
+const CARD_SCALE = 1;
 
 /* --- Styles ------------------------------------------------------------------------------ */
 
@@ -156,18 +146,25 @@ const CardInfo = animated(StyledCardInfo);
 
 const InspectableCard = props => {
     // Props
-    const { cardStartPosition, ...cardProps } = props;
+    const { cardStartPosition, isInspecting, ...cardProps } = props;
     const card: MarlonCardType = cardProps;
+    const { px, py, cWidth, cHeight } = cardStartPosition || {};
 
     // State
-    const [selected, setSelected] = useState(false);
     const [flipped, setFlipped] = useState(false);
-    const [cardScale, setCardScale] = useState('mid');
     const [showInfo, setShowInfo] = useState(false);
+
+    // didMount()
+    useEffect(() => setFlipped(isInspecting), [isInspecting]);
 
     // Springs
     const { scale } = useSpring({
-        scale: CARD_SCALES[cardScale],
+        scale: flipped || !cHeight ? CARD_SCALE : cHeight / 320,
+        config: { mass: 5, tension: 500, friction: 80 },
+    });
+    const { translateX, translateY } = useSpring({
+        translateX: flipped || !px ? '0px' : `${(-width / 2 + (px + cWidth / 2)) * (1 / (cHeight / 320))}px`,
+        translateY: flipped || !py ? '0px' : `${(-height / 2 + (py + cHeight / 2)) * (1 / (cHeight / 320))}px`,
         config: { mass: 5, tension: 500, friction: 80 },
     });
     const { frontOpacity, backOpacity, frontRotateY, backRotateY } = useSpring({
@@ -179,24 +176,17 @@ const InspectableCard = props => {
     });
     const { infoOpacity } = useSpring({ infoOpacity: showInfo ? 1 : 0 });
 
-    console.log(card);
-
     // Render
     return (
         <DraggableCard
-            style={{ transform: [{ scaleX: scale }, { scaleY: scale }] }}
-            onPress={() => setSelected(s => !flipped && !s)}
-            onLongPress={() => {
-                setFlipped(f => !f);
-                setCardScale(flipped ? 'min' : 'max');
-            }}
+            style={{ transform: [{ scaleX: scale }, { scaleY: scale }, { translateX }, { translateY }] }}
+            onLongPress={() => setFlipped(f => !f)}
         >
             <CardFront
                 style={{
                     opacity: frontOpacity,
                     transform: [{ perspective }, { rotateY: frontRotateY }],
                 }}
-                selected={selected}
             >
                 <BaseValue>
                     <ValueText>10</ValueText>

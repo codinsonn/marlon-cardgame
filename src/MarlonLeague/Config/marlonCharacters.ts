@@ -194,7 +194,7 @@ const marlonCharacters: MarlonCharactersType = Object.freeze({
     // --- Front-End Team ---
     davy: {
         ...ROLES.FRONT_END,
-        fullName: 'Davy ...',
+        fullName: 'Davy De Groote',
         title: 'Team Lead Front-End',
         startDate: '01/01/2008',
         possibleEffects: [...ROLES.FRONT_END.possibleEffects, 'consultancy', 'team-lead'],

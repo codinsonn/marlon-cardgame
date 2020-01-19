@@ -134,7 +134,7 @@ const marlonEffects: MarlonEffectsType = Object.freeze({
         emoji: '💁‍♂️',
         emojiKey: 'information_desk_person',
         title: 'Consultancy',
-        description: "Play card on opponent's side of field,\nbut draw 2 cards from your deck to your hand",
+        description: "Play card on opponent's side of field,\nbut draw 2 cards from your deck\nto your hand",
     },
     'online-marketing': {
         name: 'online-marketing',
@@ -156,7 +156,7 @@ const marlonEffects: MarlonEffectsType = Object.freeze({
         emoji: '🌟',
         emojiKey: 'star2',
         title: 'Platinum Card',
-        description: 'Locks card at base value x2.\nImmune to any negative OR positive effects.\nAwarded rarely.',
+        description: 'Locks card at base value x2.\nImmune to any negative OR\npositive effects.',
     },
 });
 
