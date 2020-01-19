@@ -109,7 +109,11 @@ const PlayableCard = props => {
             });
         }
     }, [cardRef.current, cardsInRow]);
-    useEffect(() => measureWidth(), [cardsInRow]);
+    useEffect(() => {
+        measureWidth();
+        // recalculate again when mount animation is idle
+        setTimeout(() => measureWidth(), 1000);
+    }, [cardsInRow, didMount]);
 
     // Springs
     const { translateX } = useSpring({

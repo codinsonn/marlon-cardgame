@@ -4,12 +4,12 @@ self.__precacheManifest = [
     "url": "/marlon-cardgame/static/media/ThomasML.7051b14f.jpg"
   },
   {
-    "revision": "3f4c55525a841052a980",
-    "url": "/marlon-cardgame/static/js/app.b6c657db.chunk.js"
+    "revision": "ac7f22af0bd45e0250ac",
+    "url": "/marlon-cardgame/static/js/app.62fe1d7d.chunk.js"
   },
   {
-    "revision": "3f3883ad07846acd9e388aa0c7820a10",
-    "url": "/marlon-cardgame/static/js/app.b6c657db.chunk.js.gz"
+    "revision": "48f46695d60623500f387a9772fa90cf",
+    "url": "/marlon-cardgame/static/js/app.62fe1d7d.chunk.js.gz"
   },
   {
     "revision": "c755588aa9cef0a89e68168bb64f4822",
@@ -176,7 +176,7 @@ self.__precacheManifest = [
     "url": "/marlon-cardgame/favicon.ico"
   },
   {
-    "revision": "faa25ec36364df498d30848045f765db",
+    "revision": "05d060e7b6801c59258483aa999b136a",
     "url": "/marlon-cardgame/index.html"
   },
   {
