@@ -15,6 +15,10 @@ const perspective = 1000;
 const { height, width } = Dimensions.get('window');
 const CARD_SCALE = 1;
 
+/* --- Types ------------------------------------------------------------------------------ */
+
+type PlayableCardType = MarlonCardType & { currentValue: string };
+
 /* --- Styles ------------------------------------------------------------------------------ */
 
 const borderRadiusCSS = css`
@@ -147,7 +151,7 @@ const CardInfo = animated(StyledCardInfo);
 const InspectableCard = props => {
     // Props
     const { cardStartPosition, isInspecting, ...cardProps } = props;
-    const card: MarlonCardType = cardProps;
+    const card: PlayableCardType = cardProps;
     const { px, py, cWidth, cHeight } = cardStartPosition || {};
 
     // State
@@ -189,7 +193,7 @@ const InspectableCard = props => {
                 }}
             >
                 <BaseValue>
-                    <ValueText>10</ValueText>
+                    <ValueText>{card.currentValue}</ValueText>
                 </BaseValue>
                 {card?.effect?.emojiKey && (
                     <EffectIcon>

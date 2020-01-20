@@ -41,37 +41,57 @@ const GameField = styled(View)`
     flex-direction: column;
     width: 100%;
     height: 86%;
-    background-color: #fff;
+    /*background-color: #fff;*/
 `;
 
 const GameRow = styled(View)`
     ${({ bgColor, isTopRow, isBottomRow }) => `
         display: flex;
         flex-direction: row;
+        align-self: center;
         flex: 1;
-        width: 100%;
+        width: 92%;
+        border-radius: 14px;
+        margin: 3px 0px;
         ${bgColor ? `background-color: ${bgColor};` : ''}
-        ${!isTopRow ? 'border-top-color: #FFFFFF;' : ''}
-        ${!isTopRow ? 'border-top-width: 2px;' : ''}
-        ${!isBottomRow ? 'border-bottom-color: #FFFFFF;' : ''}
-        ${!isBottomRow ? 'border-bottom-width: 2px;' : ''}
     `}
 `;
 
 const RowTotal = styled(View)`
     position: absolute;
-    height: 100%;
-    width: 15%;
-    left: 0px;
+    height: 40px;
+    width: 40px;
+    left: -18px;
+    align-self: center;
+    border-radius: 20px;
     align-items: center;
     justify-content: center;
-    border-right-color: #ffffff;
-    border-right-width: 4px;
+    z-index: 100;
     ${({ bgColor }) => (bgColor ? `background-color: ${bgColor};` : '')}
 `;
 
+RowTotal.InnerBg = styled(View)`
+    position: absolute;
+    height: 60px;
+    width: 60px;
+    left: -28px;
+    border-radius: 30px;
+    background-color: #fff;
+    opacity: 0.4;
+`;
+
+RowTotal.OuterBg = styled(View)`
+    position: absolute;
+    height: 80px;
+    width: 80px;
+    left: -38px;
+    border-radius: 40px;
+    background-color: #fff;
+    opacity: 0.2;
+`;
+
 RowTotal.Text = styled(Text)`
-    font-size: ${isPhone ? '15px' : '30px'};
+    font-size: ${isPhone ? '15px' : '20px'};
     font-weight: bold;
     color: #ffffff;
     text-align: center;
@@ -81,8 +101,9 @@ const CardRow = styled(TouchableOpacity)`
     position: absolute;
     flex: 1;
     height: 100%;
-    width: 85%;
+    width: 100%; /*85%;*/
     right: 0px;
+    overflow: hidden;
     ${({ isCardContainer }) => (isCardContainer ? 'flex-direction: row;' : '')}
     z-index: ${({ isCardContainer }) => (isCardContainer ? 20 : 10)};
     align-items: ${({ alignment }) => alignment || 'center'};
@@ -176,7 +197,7 @@ const GameScreen = props => {
                     });
                     // Render row
                     return (
-                        <GameRow key={rowKey} bgColor={bgColor} isTopRow={rowIndex === 0} isBottomRow={rowIndex === 5}>
+                        <GameRow key={rowKey} bgColor={bgColor}>
                             <RowTotal bgColor={totalBgColor}>
                                 <RowTotal.Text>{rowTotal}</RowTotal.Text>
                             </RowTotal>
@@ -185,6 +206,8 @@ const GameScreen = props => {
                                 onPress={() => onAddCard(rowKey)}
                                 isCardContainer
                             >
+                                <RowTotal.OuterBg />
+                                <RowTotal.InnerBg />
                                 {cardsWithValues.map((card, i) => (
                                     <PlayableCard
                                         key={`${rowKey}-${JSON.stringify(card.cardID)}-${i}`}
