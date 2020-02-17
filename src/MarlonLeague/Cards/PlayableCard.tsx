@@ -147,7 +147,7 @@ const PlayableCard = props => {
                     <EffectIcon isEmoji>
                         <Emoji
                             name={card.effect.emojiKey}
-                            style={{ fontSize: isPhone ? 11 : 17, textAlign: 'center' }}
+                            style={{ fontSize: isPhone ? 11 : 15, textAlign: 'center' }}
                         />
                     </EffectIcon>
                 )}

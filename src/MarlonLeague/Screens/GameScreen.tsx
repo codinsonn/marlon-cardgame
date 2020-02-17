@@ -45,16 +45,14 @@ const GameField = styled(View)`
 `;
 
 const GameRow = styled(View)`
-    ${({ bgColor, isTopRow, isBottomRow }) => `
-        display: flex;
-        flex-direction: row;
-        align-self: center;
-        flex: 1;
-        width: 92%;
-        border-radius: 14px;
-        margin: 3px 0px;
-        ${bgColor ? `background-color: ${bgColor};` : ''}
-    `}
+    display: flex;
+    flex-direction: row;
+    align-self: center;
+    flex: 1;
+    width: 92%;
+    border-radius: 14px;
+    margin: 3px 0px;
+    ${({ bgColor }) => (bgColor ? `background-color: ${bgColor};` : '')}
 `;
 
 const RowTotal = styled(View)`
@@ -91,7 +89,7 @@ RowTotal.OuterBg = styled(View)`
 `;
 
 RowTotal.Text = styled(Text)`
-    font-size: ${isPhone ? '15px' : '20px'};
+    font-size: ${isPhone ? '15px' : '18px'};
     font-weight: bold;
     color: #ffffff;
     text-align: center;
@@ -103,7 +101,7 @@ const CardRow = styled(TouchableOpacity)`
     height: 100%;
     width: 100%; /*85%;*/
     right: 0px;
-    overflow: hidden;
+    overflow: scroll;
     ${({ isCardContainer }) => (isCardContainer ? 'flex-direction: row;' : '')}
     z-index: ${({ isCardContainer }) => (isCardContainer ? 20 : 10)};
     align-items: ${({ alignment }) => alignment || 'center'};
