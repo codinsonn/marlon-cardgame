@@ -118,7 +118,7 @@ const PlayableCard = props => {
     // Springs
     const { translateX } = useSpring({
         translateX: shouldOverflow
-            ? `${index * (8 - CARD_WIDTH) * overflowFactor + (didMount ? 0 : CARD_WIDTH)}px`
+            ? `${index * (8 - CARD_WIDTH) * (overflowFactor * 0.8) + (didMount ? 0 : CARD_WIDTH)}px`
             : `${cardsInRow === 1 ? 0 : index * 8 - cardsInRow * 3 + (didMount ? 0 : CARD_WIDTH)}px`,
         config: { mass: 5, tension: 500, friction: 80 },
     });
