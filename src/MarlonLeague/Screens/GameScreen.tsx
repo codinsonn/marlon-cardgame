@@ -1,10 +1,10 @@
 import React, { useState, useMemo, useCallback } from 'react';
-import { View, Text, TouchableOpacity, Dimensions } from 'react-native';
+import { View, Text, TouchableOpacity, Dimensions, ScrollView } from 'react-native';
 import styled from 'styled-components/native';
 // Components
 import { BusinessIllustration, DesignIllustration, TechnologyIllustration } from '../../leagueRegistry';
 
-/* --- Contants ------------------------------------------------------------------------------ */
+/* --- Contants ---------------------------------------------------------------------------- */
 
 const isPhone = Dimensions.get('window').width < 850;
 
@@ -101,12 +101,29 @@ const CardRow = styled(TouchableOpacity)`
     height: 100%;
     width: 100%; /*85%;*/
     right: 0px;
-    overflow: scroll;
+    overflow: hidden;
+    padding: 0px 6px;
     ${({ isCardContainer }) => (isCardContainer ? 'flex-direction: row;' : '')}
     z-index: ${({ isCardContainer }) => (isCardContainer ? 20 : 10)};
     align-items: ${({ alignment }) => alignment || 'center'};
     justify-content: ${({ justify }) => justify || 'center'};
 `;
+
+const CardScrollView = styled(ScrollView)`
+    border-radius: 10;
+    overflow: hidden;
+    min-width: 100%;
+`;
+
+/* --- Helpers ------------------------------------------------------------------------------ */
+
+const ScrollWrapper = ({ children }) => (
+    <CardScrollView horizontal showsHorizontalScrollIndicator={false}>
+        {children}
+    </CardScrollView>
+);
+
+const FragmentWrapper = ({ children }) => <>{children}</>;
 
 /* --- <GameScreen/> ------------------------------------------------------------------------------ */
 
@@ -174,6 +191,7 @@ const GameScreen = props => {
                         setIsInspecting(false);
                         setTimeout(() => setInspectedCard(null), 600);
                     }}
+                    activeOpacity={0.8}
                 >
                     <InspectableCard {...inspectedCard} isInspecting={isInspecting} />
                 </InspectionContainer>
@@ -194,6 +212,8 @@ const GameScreen = props => {
                         return { ...card, currentValue };
                     });
                     // Render row
+                    const CardWrapper = shouldOverflow ? ScrollWrapper : FragmentWrapper;
+                    const bgStyle = { [`margin${rowIndex < 3 ? 'Left' : 'Right'}`]: 15 };
                     return (
                         <GameRow key={rowKey} bgColor={bgColor}>
                             <RowTotal bgColor={totalBgColor}>
@@ -202,33 +222,36 @@ const GameScreen = props => {
                             <CardRow
                                 justify={shouldOverflow ? 'flex-start' : 'center'}
                                 onPress={() => onAddCard(rowKey)}
+                                activeOpacity={0.8}
                                 isCardContainer
                             >
                                 <RowTotal.OuterBg />
                                 <RowTotal.InnerBg />
-                                {cardsWithValues.map((card, i) => (
-                                    <PlayableCard
-                                        key={`${rowKey}-${JSON.stringify(card.cardID)}-${i}`}
-                                        index={i}
-                                        isVisible={!inspectedCard || inspectedCard.cardID !== card.cardID}
-                                        cardsInRow={cardsWithValues.length}
-                                        card={{ ...card }}
-                                        overflowFactor={overflowFactor}
-                                        shouldOverflow={shouldOverflow}
-                                        onPress={() => onAddCard(rowKey)}
-                                        onLongPress={onInspectCard}
-                                    />
-                                ))}
+                                <CardWrapper>
+                                    {cardsWithValues.map((card, i) => (
+                                        <PlayableCard
+                                            key={`${rowKey}-${JSON.stringify(card.cardID)}-${i}`}
+                                            index={i}
+                                            isVisible={!inspectedCard || inspectedCard.cardID !== card.cardID}
+                                            cardsInRow={cardsWithValues.length}
+                                            card={{ ...card }}
+                                            overflowFactor={overflowFactor}
+                                            shouldOverflow={shouldOverflow}
+                                            onPress={() => onAddCard(rowKey)}
+                                            onLongPress={onInspectCard}
+                                        />
+                                    ))}
+                                </CardWrapper>
                             </CardRow>
                             <CardRow alignment={rowIndex < 3 ? 'flex-start' : 'flex-end'}>
                                 {rowKey.includes('business') && (
-                                    <BusinessIllustration width={ILLUSTRATION_HEIGHT} height="66%" />
+                                    <BusinessIllustration width={ILLUSTRATION_HEIGHT} height="66%" style={bgStyle} />
                                 )}
                                 {rowKey.includes('design') && (
-                                    <DesignIllustration width={ILLUSTRATION_HEIGHT} height="66%" />
+                                    <DesignIllustration width={ILLUSTRATION_HEIGHT} height="66%" style={bgStyle} />
                                 )}
                                 {rowKey.includes('technology') && (
-                                    <TechnologyIllustration width={ILLUSTRATION_HEIGHT} height="66%" />
+                                    <TechnologyIllustration width={ILLUSTRATION_HEIGHT} height="66%" style={bgStyle} />
                                 )}
                             </CardRow>
                         </GameRow>
@@ -239,6 +262,6 @@ const GameScreen = props => {
     );
 };
 
-/* --- Export GameScreen ------------------------------------------------------------------------------ */
+/* --- Export ------------------------------------------------------------------------------ */
 
 export default GameScreen;

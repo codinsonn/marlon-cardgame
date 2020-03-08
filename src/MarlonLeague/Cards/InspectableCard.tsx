@@ -32,7 +32,7 @@ const fillParentCSS = css`
 
 // -- Styled Components --
 
-const StyledCard = styled(TouchableOpacity)`
+const StyledCard = styled(View)`
     width: 220px;
     height: 320px;
     ${borderRadiusCSS}
@@ -182,10 +182,7 @@ const InspectableCard = props => {
 
     // Render
     return (
-        <DraggableCard
-            style={{ transform: [{ scaleX: scale }, { scaleY: scale }, { translateX }, { translateY }] }}
-            onLongPress={() => setFlipped(f => !f)}
-        >
+        <DraggableCard style={{ transform: [{ scaleX: scale }, { scaleY: scale }, { translateX }, { translateY }] }}>
             <CardFront
                 style={{
                     opacity: frontOpacity,
