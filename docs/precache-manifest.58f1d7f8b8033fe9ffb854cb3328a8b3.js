@@ -1,15 +1,15 @@
 self.__precacheManifest = [
   {
-    "revision": "f1afb3e14a62640c3250",
-    "url": "/marlon-cardgame/static/js/app.0ce0da42.chunk.js"
+    "revision": "a01ecdd6a67e1fc20373",
+    "url": "/marlon-cardgame/static/js/app.aaa18ac9.chunk.js"
   },
   {
-    "revision": "c142fa1b16c196ebfdd3",
-    "url": "/marlon-cardgame/static/js/runtime~app.e39018b2.js"
+    "revision": "adf81e2f3f95f5d48961",
+    "url": "/marlon-cardgame/static/js/runtime~app.a9d4e88b.js"
   },
   {
-    "revision": "ed2a63ef97decede3460",
-    "url": "/marlon-cardgame/static/js/2.9d6f0f57.chunk.js"
+    "revision": "5bedcc36ab90371d31e4",
+    "url": "/marlon-cardgame/static/js/2.faf2ec53.chunk.js"
   },
   {
     "revision": "c755588aa9cef0a89e68168bb64f4822",
@@ -140,16 +140,16 @@ self.__precacheManifest = [
     "url": "/marlon-cardgame/static/media/Vincent.c0ed3ed0.jpg"
   },
   {
-    "revision": "7a7bc7ead25db795e58b336f04d2624c",
-    "url": "/marlon-cardgame/favicon.ico"
-  },
-  {
     "revision": "48c7ed4e7da9792af288a60d7242d615",
     "url": "/marlon-cardgame/expo-service-worker.js"
   },
   {
     "revision": "d0c694b562b2208635f250762cd7fc79",
     "url": "/marlon-cardgame/serve.json"
+  },
+  {
+    "revision": "7a7bc7ead25db795e58b336f04d2624c",
+    "url": "/marlon-cardgame/favicon.ico"
   },
   {
     "revision": "79802533b3432abd0dcdd77d7abc23c9",
@@ -216,20 +216,20 @@ self.__precacheManifest = [
     "url": "/marlon-cardgame/apple/splash/icon_828x1792.png"
   },
   {
-    "revision": "ae8e49355c355b32272e68f58bce47cc",
+    "revision": "6da53ce8bec2859b763b9e00b2cf5ce2",
     "url": "/marlon-cardgame/index.html"
   },
   {
-    "revision": "7000d4b9a5fbb3aaba869ed121f74d29",
-    "url": "/marlon-cardgame/static/js/runtime~app.e39018b2.js.gz"
+    "revision": "0fed43a7a706a5937f76a5eca4540a5a",
+    "url": "/marlon-cardgame/static/js/runtime~app.a9d4e88b.js.gz"
   },
   {
-    "revision": "b8283dc932489e46e481ee70d86c2a68",
-    "url": "/marlon-cardgame/static/js/app.0ce0da42.chunk.js.gz"
+    "revision": "3713d5e30f710ecc5a06642445e9c0c5",
+    "url": "/marlon-cardgame/static/js/app.aaa18ac9.chunk.js.gz"
   },
   {
-    "revision": "db5c0544d8f34b6614d324d878d81347",
-    "url": "/marlon-cardgame/static/js/2.9d6f0f57.chunk.js.gz"
+    "revision": "1355ec3ba63490c550ffbfb4af85cf86",
+    "url": "/marlon-cardgame/static/js/2.faf2ec53.chunk.js.gz"
   },
   {
     "revision": "575f6e692cd5a2e36da45ff074ee09e2",
