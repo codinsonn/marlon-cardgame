@@ -1,6 +1,7 @@
 import React, { useState, useMemo, useCallback } from 'react';
 import { View, Text, TouchableOpacity, Dimensions, ScrollView } from 'react-native';
 import styled from 'styled-components/native';
+import { animated, useSpring } from 'react-spring/native';
 // Components
 import { BusinessIllustration, DesignIllustration, TechnologyIllustration } from '../../leagueRegistry';
 
@@ -24,7 +25,6 @@ const GameContainer = styled(View)`
 `;
 
 const InspectionContainer = styled(TouchableOpacity)`
-    display: flex;
     position: absolute;
     top: 0px;
     left: 0px;
@@ -32,16 +32,24 @@ const InspectionContainer = styled(TouchableOpacity)`
     width: 100%;
     align-items: center;
     justify-content: center;
-    background-color: rgba(0, 0, 0, 0.7);
     z-index: 200;
 `;
+
+const InspectionBg = animated(styled(View)`
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 0;
+`);
 
 const GameField = styled(View)`
     display: flex;
     flex-direction: column;
     width: 100%;
     height: 86%;
-    /*background-color: #fff;*/
 `;
 
 const GameRow = styled(View)`
@@ -53,6 +61,7 @@ const GameRow = styled(View)`
     border-radius: 14px;
     margin: 3px 0px;
     ${({ bgColor }) => (bgColor ? `background-color: ${bgColor};` : '')}
+    ${({ isDivider }) => (isDivider ? 'margin-bottom: 10px;' : '')}
 `;
 
 const RowTotal = styled(View)`
@@ -99,7 +108,7 @@ const CardRow = styled(TouchableOpacity)`
     position: absolute;
     flex: 1;
     height: 100%;
-    width: 100%; /*85%;*/
+    width: 100%;
     right: 0px;
     overflow: hidden;
     padding: 0px 6px;
@@ -181,6 +190,10 @@ const GameScreen = props => {
         [cards],
     );
 
+    // -- Animations --
+
+    const { opacity } = useSpring({ opacity: isInspecting ? 1 : 0 });
+
     // -- Render --
 
     return (
@@ -191,8 +204,9 @@ const GameScreen = props => {
                         setIsInspecting(false);
                         setTimeout(() => setInspectedCard(null), 600);
                     }}
-                    activeOpacity={0.8}
+                    activeOpacity={1}
                 >
+                    <InspectionBg style={{ opacity }} />
                     <InspectableCard {...inspectedCard} isInspecting={isInspecting} />
                 </InspectionContainer>
             )}
@@ -215,7 +229,7 @@ const GameScreen = props => {
                     const CardWrapper = shouldOverflow ? ScrollWrapper : FragmentWrapper;
                     const bgStyle = { [`margin${rowIndex < 3 ? 'Left' : 'Right'}`]: 15 };
                     return (
-                        <GameRow key={rowKey} bgColor={bgColor}>
+                        <GameRow key={rowKey} bgColor={bgColor} isDivider={rowIndex === 2}>
                             <RowTotal bgColor={totalBgColor}>
                                 <RowTotal.Text>{rowTotal}</RowTotal.Text>
                             </RowTotal>

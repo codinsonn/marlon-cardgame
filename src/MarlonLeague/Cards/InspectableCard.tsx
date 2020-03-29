@@ -49,7 +49,7 @@ const CardSide = styled(View)`
     background-color: #fff;
 `;
 
-const FrontIconCSS = css`
+const frontIconCSS = css`
     position: absolute;
     left: 10px;
     width: 70px;
@@ -62,7 +62,7 @@ const FrontIconCSS = css`
 `;
 
 const BaseValue = styled(View)`
-    ${FrontIconCSS}
+    ${frontIconCSS}
     top: 10px;
     border-color: #4ca76c;
     background-color: #3f3f46;
@@ -75,7 +75,7 @@ const ValueText = styled(Text)`
 `;
 
 const EffectIcon = styled(View)`
-    ${FrontIconCSS}
+    ${frontIconCSS}
     bottom: 10px;
     border-color: #4ca76c;
     background-color: #3f3f46;
@@ -139,6 +139,16 @@ const Summary = styled(Text)`
     color: #1f4b90;
 `;
 
+const CardFooter = styled(View)`
+    position: absolute;
+    width: 120%;
+    height: 90px;
+    bottom: -35px;
+    background-color: ${({ bgColor }) => bgColor || '#3f3f46'};
+    transform: skewY(4deg);
+    z-index: 80;
+`;
+
 // -- Animated Components --
 
 const DraggableCard = animated(StyledCard);
@@ -161,76 +171,91 @@ const InspectableCard = props => {
     // didMount()
     useEffect(() => setFlipped(isInspecting), [isInspecting]);
 
-    // Springs
-    const { scale } = useSpring({
-        scale: flipped || !cHeight ? CARD_SCALE : cHeight / 320,
+    // -- Animation --
+
+    // @ts-ignore
+    const { scale, frontOpacity, backOpacity, frontRotateY, backRotateY, translateX, translateY } = useSpring({
+        to: {
+            scale: CARD_SCALE,
+            frontOpacity: -0.7,
+            backOpacity: 1,
+            frontRotateY: '-180deg',
+            backRotateY: '0deg',
+            translateX: '0px',
+            translateY: '0px',
+        },
+        from: {
+            scale: cHeight / 320,
+            frontOpacity: 1,
+            backOpacity: -0.7,
+            frontRotateY: '0deg',
+            backRotateY: '180deg',
+            translateX: `${(-width / 2 + (px + cWidth / 2)) * (1 / (cHeight / 320))}px`,
+            translateY: `${(-height / 2 + (py + cHeight / 2)) * (1 / (cHeight / 320))}px`,
+        },
+        reverse: !flipped,
         config: { mass: 5, tension: 500, friction: 80 },
     });
-    const { translateX, translateY } = useSpring({
-        translateX: flipped || !px ? '0px' : `${(-width / 2 + (px + cWidth / 2)) * (1 / (cHeight / 320))}px`,
-        translateY: flipped || !py ? '0px' : `${(-height / 2 + (py + cHeight / 2)) * (1 / (cHeight / 320))}px`,
-        config: { mass: 5, tension: 500, friction: 80 },
-    });
-    const { frontOpacity, backOpacity, frontRotateY, backRotateY } = useSpring({
-        frontOpacity: flipped ? -0.7 : 1,
-        backOpacity: flipped ? 1 : -0.7,
-        frontRotateY: `${flipped ? 180 : 0}deg`,
-        backRotateY: `${flipped ? 0 : -180}deg`,
-        config: { mass: 5, tension: 500, friction: 80 },
-    });
+
     const { infoOpacity } = useSpring({ infoOpacity: showInfo ? 1 : 0 });
 
-    // Render
+    // -- Render --
+
     return (
-        <DraggableCard style={{ transform: [{ scaleX: scale }, { scaleY: scale }, { translateX }, { translateY }] }}>
-            <CardFront
-                style={{
-                    opacity: frontOpacity,
-                    transform: [{ perspective }, { rotateY: frontRotateY }],
-                }}
+        <TouchableOpacity activeOpacity={1}>
+            <DraggableCard
+                style={{ transform: [{ scaleX: scale }, { scaleY: scale }, { translateX }, { translateY }] }}
             >
-                <BaseValue>
-                    <ValueText>{card.currentValue}</ValueText>
-                </BaseValue>
-                {card?.effect?.emojiKey && (
-                    <EffectIcon>
-                        <Emoji name={card?.effect?.emojiKey} style={{ fontSize: 40 }} />
-                    </EffectIcon>
-                )}
-                <StyledImage source={card.image} resizeMode="cover" />
-            </CardFront>
-            <CardBack style={{ opacity: backOpacity, transform: [{ perspective }, { rotateY: backRotateY }] }}>
-                <InfoToggle onPress={() => setShowInfo(!showInfo)}>
-                    <InfoIcon />
-                </InfoToggle>
-                <CardInfo>
-                    <PersonName>{card.fullName}</PersonName>
-                    <PersonRole>{card.title}</PersonRole>
-                    <DividerLine />
-                    <Subtitle>
-                        <Emoji name={card?.effect?.emojiKey} /> {card?.effect?.title}
-                    </Subtitle>
-                    <Summary>{`${card?.effect?.description}`}</Summary>
-                    <Subtitle>
-                        <Emoji name="sparkle" /> 10 current value
-                    </Subtitle>
-                    <Summary>
-                        3 base value{'\n'}
-                        +1 value boost (2x){'\n'}
-                        x2 value multiplier (1x)
-                    </Summary>
-                </CardInfo>
-                <CardInfo style={{ opacity: infoOpacity }}>
-                    <PersonName>{card.fullName}</PersonName>
-                    <PersonRole>{card.title}</PersonRole>
-                    <DividerLine />
-                    <Subtitle>Je moet bij mij zijn voor</Subtitle>
-                    <Summary>{`${card.companyRole}`}</Summary>
-                    <Subtitle>Maar ook voor info over</Subtitle>
-                    <Summary>{`${card.summary}`}</Summary>
-                </CardInfo>
-            </CardBack>
-        </DraggableCard>
+                <CardFront
+                    style={{
+                        opacity: frontOpacity,
+                        transform: [{ perspective }, { rotateY: frontRotateY }],
+                    }}
+                >
+                    <BaseValue>
+                        <ValueText>{card.currentValue}</ValueText>
+                    </BaseValue>
+                    {card?.effect?.emojiKey && (
+                        <EffectIcon>
+                            <Emoji name={card?.effect?.emojiKey} style={{ fontSize: 40 }} />
+                        </EffectIcon>
+                    )}
+                    <CardFooter />
+                    <StyledImage source={card.image} resizeMode="cover" />
+                </CardFront>
+                <CardBack style={{ opacity: backOpacity, transform: [{ perspective }, { rotateY: backRotateY }] }}>
+                    <InfoToggle onPress={() => setShowInfo(!showInfo)}>
+                        <InfoIcon />
+                    </InfoToggle>
+                    <CardInfo>
+                        <PersonName>{card.fullName}</PersonName>
+                        <PersonRole>{card.title}</PersonRole>
+                        <DividerLine />
+                        <Subtitle>
+                            <Emoji name={card?.effect?.emojiKey} /> {card?.effect?.title}
+                        </Subtitle>
+                        <Summary>{`${card?.effect?.description}`}</Summary>
+                        <Subtitle>
+                            <Emoji name="sparkle" /> 10 current value
+                        </Subtitle>
+                        <Summary>
+                            3 base value{'\n'}
+                            +1 value boost (2x){'\n'}
+                            x2 value multiplier (1x)
+                        </Summary>
+                    </CardInfo>
+                    <CardInfo style={{ opacity: infoOpacity }}>
+                        <PersonName>{card.fullName}</PersonName>
+                        <PersonRole>{card.title}</PersonRole>
+                        <DividerLine />
+                        <Subtitle>Je moet bij mij zijn voor</Subtitle>
+                        <Summary>{`${card.companyRole}`}</Summary>
+                        <Subtitle>Maar ook voor info over</Subtitle>
+                        <Summary>{`${card.summary}`}</Summary>
+                    </CardInfo>
+                </CardBack>
+            </DraggableCard>
+        </TouchableOpacity>
     );
 };
 

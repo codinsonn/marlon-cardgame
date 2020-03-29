@@ -42,7 +42,7 @@ const CardSide = styled(View)`
     background-color: #fff;
 `;
 
-const FrontIconCSS = css`
+const frontIconCSS = css`
     position: absolute;
     display: flex;
     left: ${isPhone ? '4px' : '5px'};
@@ -58,7 +58,7 @@ const FrontIconCSS = css`
 `;
 
 const BaseValue = styled(View)`
-    ${FrontIconCSS}
+    ${frontIconCSS}
     top: 5px;
     border-color: #4ca76c;
     background-color: #3f3f46;
@@ -71,7 +71,7 @@ const ValueText = styled(Text)`
 `;
 
 const EffectIcon = styled(View)`
-    ${FrontIconCSS}
+    ${frontIconCSS}
     left: 5px;
     bottom: 5px;
     border-color: #4ca76c;
@@ -80,6 +80,16 @@ const EffectIcon = styled(View)`
 
 const StyledImage = styled(Image)`
     ${fillParentCSS}
+`;
+
+const CardFooter = styled(View)`
+    position: absolute;
+    width: 120%;
+    height: 30px;
+    bottom: -10px;
+    background-color: ${({ bgColor }) => bgColor || '#3f3f46'};
+    transform: skewY(4deg);
+    z-index: 80;
 `;
 
 // -- Animated Components --
@@ -152,6 +162,7 @@ const PlayableCard = props => {
                         />
                     </EffectIcon>
                 )}
+                <CardFooter />
                 <StyledImage source={card.image} resizeMode="cover" />
             </CardFront>
         </DraggableCard>
