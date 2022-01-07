@@ -1,6 +1,6 @@
 # Marlon Cardgame
 
-First Test: https://thorrstevens.github.io/marlon-cardgame/
+First Test: https://codinsonn.github.io/marlon-cardgame/
 
 ## Running Locally
 
